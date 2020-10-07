@@ -2,14 +2,14 @@
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PizzaApp.Models.Database.AppDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Models.Database.AppDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PizzaApp.Models.Database.AppDBContext context)
+        protected override void Seed(Models.Database.AppDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
