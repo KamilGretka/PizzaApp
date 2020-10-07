@@ -12,14 +12,14 @@ namespace PizzaApp
 
         internal static void AddValueToCountBox(TextBox countTextBox)
         {
-            float value = float.Parse(countTextBox.Text);
+            int value = int.Parse(countTextBox.Text);
             if (value < 10)
                 countTextBox.Text = (value + 1).ToString();
         }
 
         internal static void SubstractValuInCountBox(TextBox countTextBox)
         {
-            float value = float.Parse(countTextBox.Text);
+            int value = int.Parse(countTextBox.Text);
             if (value > 0)
                 countTextBox.Text = (value - 1).ToString();
         }
