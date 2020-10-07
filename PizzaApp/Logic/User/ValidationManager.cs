@@ -3,9 +3,7 @@ using PizzaApp.Output_Messages;
 using System;
 using System.Linq;
 using System.Net.Mail;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-using System.Windows.Controls;
 
 namespace PizzaApp.Logic.User
 {

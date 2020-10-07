@@ -32,7 +32,7 @@ namespace PizzaApp
             {
                 if (!string.IsNullOrEmpty(validator.Item2))
                 {
-                    MessageBox.Show(validator.Item2, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(validator.Item2, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 }
             }
@@ -45,11 +45,11 @@ namespace PizzaApp
 
                 if (emailSendStatus.SendSuccessfully == true)
                 {
-                    MessageBox.Show(UserMessages.EmailSended, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(UserMessages.EmailSended, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AddHistoryRecordToDatabase();
                 }
                 else
-                    MessageBox.Show(UserMessages.EmailFailedToSend, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(UserMessages.EmailFailedToSend, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Close();
             }
@@ -65,11 +65,17 @@ namespace PizzaApp
                 OrderMessage = NotesTextBox.Text,
                 CustomerName = $"{FirstNameTextBox.Text} {LastNameTextBox.Text}"
             };
-
-            using (AppDBContext db = new AppDBContext())
+            try
             {
-                db.OrderHistory.Add(history);
-                db.SaveChanges();
+                using (AppDBContext db = new AppDBContext())
+                {
+                    db.OrderHistory.Add(history);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            { 
+                //Information from this exception should go to logs (connection with database failed, record not added)
             }
         }
     }

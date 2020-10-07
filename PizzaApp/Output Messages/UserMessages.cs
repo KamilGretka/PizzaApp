@@ -13,5 +13,7 @@
         internal const string EmailFailedToSend = "Oops! Something went wrong. Your order will not be processed, please try again later.";
 
         internal const string InvalidUserDataFormatInput = "Invalid data has been found, please check your personal details.";
+
+        internal const string DatabaseConnectionProblem = "This function is temporarily inaccessible, please try again later.";
     }
 }

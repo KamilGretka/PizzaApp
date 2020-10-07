@@ -14,7 +14,7 @@ namespace PizzaApp
 
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             orderWindowThread = new Thread(Helpers.OpenNewWindow<OrderWindow>);
             orderWindowThread.SetApartmentState(ApartmentState.STA);
             orderWindowThread.Start();
