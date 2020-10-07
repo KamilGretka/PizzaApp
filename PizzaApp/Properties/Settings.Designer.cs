@@ -40,26 +40,5 @@ namespace PizzaApp.Properties {
                 return ((string)(this["EmailPassword"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\PizzaAppDB.md" +
-            "f;Integrated Security=True")]
-        public string PizzaAppDBConnectionString {
-            get {
-                return ((string)(this["PizzaAppDBConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=PizzaDB;Integrated Security=True")]
-        public string PizzaDBConnectionString {
-            get {
-                return ((string)(this["PizzaDBConnectionString"]));
-            }
-        }
     }
 }

@@ -8,21 +8,5 @@
     <Setting Name="EmailPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyKIuXEsh+k6DnjTIYBuw8wQAAAACAAAAAAAQZgAAAAEAACAAAABDpTM9hoN2yvQI2PrzVa9BVxisfNYd+oXS9h9aqKpwxwAAAAAOgAAAAAIAACAAAADFE6/y8AmYVn9nJZFsR0bEEjXBJmn+8CF9oV9aq8PFDTAAAACjwXwaleTd9N7DZrQzTG4wPGj7RiPwLxXb0it+ips7cR2t/vvN8cOJwEBTjw9yuKBAAAAAWzVXDNCeCiQ/J+2UxkB+hmm2uM6VFyQMiCvRWQjKju7mh+rHhgCxOrRydGcq4r2sNLCNzms8Ted+gKjkHgJ92w==</Value>
     </Setting>
-    <Setting Name="PizzaAppDBConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PizzaAppDB.mdf;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PizzaAppDB.mdf;Integrated Security=True</Value>
-    </Setting>
-    <Setting Name="PizzaDBConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=.;Initial Catalog=PizzaDB;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=.;Initial Catalog=PizzaDB;Integrated Security=True</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
