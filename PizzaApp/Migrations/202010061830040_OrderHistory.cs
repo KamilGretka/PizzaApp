@@ -1,8 +1,7 @@
 ﻿namespace PizzaApp.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class OrderHistory : DbMigration
     {
         public override void Up()

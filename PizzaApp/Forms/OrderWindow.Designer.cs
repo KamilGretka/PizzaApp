@@ -86,11 +86,18 @@
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.ZlotyLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
+            this.ExtrasLabel = new System.Windows.Forms.Label();
+            this.DoubleCheeseCheckbox = new System.Windows.Forms.CheckBox();
+            this.SalamiCheckbox = new System.Windows.Forms.CheckBox();
+            this.HamCheckbox = new System.Windows.Forms.CheckBox();
+            this.MushroomsCheckbox = new System.Windows.Forms.CheckBox();
+            this.extrasGroupBox = new System.Windows.Forms.GroupBox();
             this.OrderTabs.SuspendLayout();
             this.PizzaTab.SuspendLayout();
             this.DishesTab.SuspendLayout();
             this.SoupsTab.SuspendLayout();
             this.DrinksTab.SuspendLayout();
+            this.extrasGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MargherittaPlus
@@ -116,7 +123,7 @@
             // 
             // CostBox
             // 
-            this.CostBox.Location = new System.Drawing.Point(66, 212);
+            this.CostBox.Location = new System.Drawing.Point(214, 204);
             this.CostBox.Name = "CostBox";
             this.CostBox.ReadOnly = true;
             this.CostBox.Size = new System.Drawing.Size(100, 20);
@@ -700,7 +707,7 @@
             // 
             this.CostLabel.AutoSize = true;
             this.CostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CostLabel.Location = new System.Drawing.Point(8, 207);
+            this.CostLabel.Location = new System.Drawing.Point(159, 200);
             this.CostLabel.Name = "CostLabel";
             this.CostLabel.Size = new System.Drawing.Size(52, 24);
             this.CostLabel.TabIndex = 5;
@@ -708,7 +715,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(147, 247);
+            this.ConfirmButton.Location = new System.Drawing.Point(504, 207);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
             this.ConfirmButton.TabIndex = 6;
@@ -720,7 +727,7 @@
             // 
             this.ZlotyLabel.AutoSize = true;
             this.ZlotyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ZlotyLabel.Location = new System.Drawing.Point(185, 214);
+            this.ZlotyLabel.Location = new System.Drawing.Point(320, 204);
             this.ZlotyLabel.Name = "ZlotyLabel";
             this.ZlotyLabel.Size = new System.Drawing.Size(37, 18);
             this.ZlotyLabel.TabIndex = 8;
@@ -728,7 +735,7 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(12, 247);
+            this.BackButton.Location = new System.Drawing.Point(12, 207);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 9;
@@ -736,11 +743,79 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // ExtrasLabel
+            // 
+            this.ExtrasLabel.AutoSize = true;
+            this.ExtrasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ExtrasLabel.Location = new System.Drawing.Point(385, 26);
+            this.ExtrasLabel.Name = "ExtrasLabel";
+            this.ExtrasLabel.Size = new System.Drawing.Size(164, 24);
+            this.ExtrasLabel.TabIndex = 10;
+            this.ExtrasLabel.Text = "Select your extras!";
+            // 
+            // DoubleCheeseCheckbox
+            // 
+            this.DoubleCheeseCheckbox.AutoSize = true;
+            this.DoubleCheeseCheckbox.Location = new System.Drawing.Point(6, 19);
+            this.DoubleCheeseCheckbox.Name = "DoubleCheeseCheckbox";
+            this.DoubleCheeseCheckbox.Size = new System.Drawing.Size(99, 17);
+            this.DoubleCheeseCheckbox.TabIndex = 11;
+            this.DoubleCheeseCheckbox.Text = "Double Cheese";
+            this.DoubleCheeseCheckbox.UseVisualStyleBackColor = true;
+            this.DoubleCheeseCheckbox.Click += new System.EventHandler(this.DoubleCheeseCheckbox_Click);
+            // 
+            // SalamiCheckbox
+            // 
+            this.SalamiCheckbox.AutoSize = true;
+            this.SalamiCheckbox.Location = new System.Drawing.Point(113, 19);
+            this.SalamiCheckbox.Name = "SalamiCheckbox";
+            this.SalamiCheckbox.Size = new System.Drawing.Size(57, 17);
+            this.SalamiCheckbox.TabIndex = 12;
+            this.SalamiCheckbox.Text = "Salami";
+            this.SalamiCheckbox.UseVisualStyleBackColor = true;
+            this.SalamiCheckbox.Click += new System.EventHandler(this.SalamiCheckbox_Click);
+            // 
+            // HamCheckbox
+            // 
+            this.HamCheckbox.AutoSize = true;
+            this.HamCheckbox.Location = new System.Drawing.Point(6, 66);
+            this.HamCheckbox.Name = "HamCheckbox";
+            this.HamCheckbox.Size = new System.Drawing.Size(48, 17);
+            this.HamCheckbox.TabIndex = 13;
+            this.HamCheckbox.Text = "Ham";
+            this.HamCheckbox.UseVisualStyleBackColor = true;
+            this.HamCheckbox.Click += new System.EventHandler(this.HamCheckbox_Click);
+            // 
+            // MushroomsCheckbox
+            // 
+            this.MushroomsCheckbox.AutoSize = true;
+            this.MushroomsCheckbox.Location = new System.Drawing.Point(113, 66);
+            this.MushroomsCheckbox.Name = "MushroomsCheckbox";
+            this.MushroomsCheckbox.Size = new System.Drawing.Size(80, 17);
+            this.MushroomsCheckbox.TabIndex = 14;
+            this.MushroomsCheckbox.Text = "Mushrooms";
+            this.MushroomsCheckbox.UseVisualStyleBackColor = true;
+            this.MushroomsCheckbox.Click += new System.EventHandler(this.MushroomsCheckbox_Click);
+            // 
+            // extrasGroupBox
+            // 
+            this.extrasGroupBox.Controls.Add(this.DoubleCheeseCheckbox);
+            this.extrasGroupBox.Controls.Add(this.MushroomsCheckbox);
+            this.extrasGroupBox.Controls.Add(this.SalamiCheckbox);
+            this.extrasGroupBox.Controls.Add(this.HamCheckbox);
+            this.extrasGroupBox.Location = new System.Drawing.Point(379, 53);
+            this.extrasGroupBox.Name = "extrasGroupBox";
+            this.extrasGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.extrasGroupBox.TabIndex = 15;
+            this.extrasGroupBox.TabStop = false;
+            // 
             // OrderWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 291);
+            this.ClientSize = new System.Drawing.Size(594, 241);
+            this.Controls.Add(this.extrasGroupBox);
+            this.Controls.Add(this.ExtrasLabel);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ZlotyLabel);
             this.Controls.Add(this.ConfirmButton);
@@ -749,6 +824,7 @@
             this.Controls.Add(this.CostBox);
             this.Name = "OrderWindow";
             this.Text = "Making Order";
+            this.Load += new System.EventHandler(this.OrderWindow_Load);
             this.OrderTabs.ResumeLayout(false);
             this.PizzaTab.ResumeLayout(false);
             this.PizzaTab.PerformLayout();
@@ -758,6 +834,8 @@
             this.SoupsTab.PerformLayout();
             this.DrinksTab.ResumeLayout(false);
             this.DrinksTab.PerformLayout();
+            this.extrasGroupBox.ResumeLayout(false);
+            this.extrasGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -823,5 +901,11 @@
         private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.Label ZlotyLabel;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label ExtrasLabel;
+        private System.Windows.Forms.CheckBox DoubleCheeseCheckbox;
+        private System.Windows.Forms.CheckBox SalamiCheckbox;
+        private System.Windows.Forms.CheckBox HamCheckbox;
+        private System.Windows.Forms.CheckBox MushroomsCheckbox;
+        private System.Windows.Forms.GroupBox extrasGroupBox;
     }
 }

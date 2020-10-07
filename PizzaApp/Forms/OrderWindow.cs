@@ -11,93 +11,125 @@ namespace PizzaApp
     public partial class OrderWindow : Form
     {
         Thread orderConfirm, mainWindow;
-
+        private static decimal extrasPrice;
         public OrderWindow()
         {
             InitializeComponent();
         }
+        private void OrderWindow_Load(object sender, EventArgs e)
+        {
+            DoubleCheeseCheckbox.Hide();
+            SalamiCheckbox.Hide();
+            HamCheckbox.Hide();
+            MushroomsCheckbox.Hide();
+        }
 
-        #region Others
         internal void ChangeCurrentPriceValue()
         {
             try
             {
-                CostBox.Text = GenerateOrderList().Sum(x => x).ToString();
+                CostBox.Text = (GenerateOrderList().Sum(x => x) + extrasPrice).ToString();
+
             }
             catch (Exception)
             {
-                MessageBox.Show("Invalid parameter");
+                MessageBox.Show("Invalid parameter.", WindowsTypes.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private List<float> GenerateOrderList()
+        private List<decimal> GenerateOrderList()
         {
-            List<KeyValuePair<int, float>> orderList = new List<KeyValuePair<int, float>>()
+            List<KeyValuePair<int, decimal>> orderList = new List<KeyValuePair<int, decimal>>()
             {
-                new KeyValuePair<int, float>(int.Parse(MargherittaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Margheritta"])),
-                new KeyValuePair<int, float>(int.Parse(VegeterianaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Vegetariana"])),
-                new KeyValuePair<int, float>(int.Parse(ToscaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Tosca"])),
-                new KeyValuePair<int, float>(int.Parse(VeneciaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Venecia"])),
-                new KeyValuePair<int, float>(int.Parse(PorkHopCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Porkhop"])),
-                new KeyValuePair<int, float>(int.Parse(FishCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Fish"])),
-                new KeyValuePair<int, float>(int.Parse(HungarianCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Hungarian Cake"])),
-                new KeyValuePair<int, float>(int.Parse(TomatoSoupCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Tomato Soup"])),
-                new KeyValuePair<int, float>(int.Parse(ChickenSoupCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Chicken Soup"])),
-                new KeyValuePair<int, float>(int.Parse(CoffieCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Coffie"])),
-                new KeyValuePair<int, float>(int.Parse(TeaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Tea"])),
-                new KeyValuePair<int, float>(int.Parse(ColaCountBox.Text), float.Parse(ConfigurationManager.AppSettings["Cola"])),
+                new KeyValuePair<int, decimal>(int.Parse(MargherittaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Margheritta"])),
+                new KeyValuePair<int, decimal>(int.Parse(VegeterianaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Vegetariana"])),
+                new KeyValuePair<int, decimal>(int.Parse(ToscaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tosca"])),
+                new KeyValuePair<int, decimal>(int.Parse(VeneciaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Venecia"])),
+                new KeyValuePair<int, decimal>(int.Parse(PorkHopCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Porkhop"])),
+                new KeyValuePair<int, decimal>(int.Parse(FishCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Fish"])),
+                new KeyValuePair<int, decimal>(int.Parse(HungarianCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Hungarian Cake"])),
+                new KeyValuePair<int, decimal>(int.Parse(TomatoSoupCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tomato Soup"])),
+                new KeyValuePair<int, decimal>(int.Parse(ChickenSoupCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Chicken Soup"])),
+                new KeyValuePair<int, decimal>(int.Parse(CoffieCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Coffie"])),
+                new KeyValuePair<int, decimal>(int.Parse(TeaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tea"])),
+                new KeyValuePair<int, decimal>(int.Parse(ColaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Cola"])),
             };
 
-            //foreach (Products product in (Products[])Enum.GetValues(typeof(Products)))
-            //{
-            //    orderList.Add(new KeyValuePair<int, float>(int.Parse(MargherittaCountBox.Text), float.Parse(ConfigurationManager.AppSettings[product.ToString()])));
-            //}
-
-            List<float> countedOrderList = new List<float>();
+            List<decimal> countedOrderList = new List<decimal>();
 
             foreach (var order in orderList)
             {
                 countedOrderList.Add(order.Key * order.Value);
             }
 
+            if (countedOrderList.All(x => x.Equals(0)))
+                extrasPrice = 0;
             return countedOrderList;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            float currentPrice = float.Parse(CostBox.Text);
-            if (currentPrice == 0)
-                MessageBox.Show(UserMessages.NoOrder);
-            else if (float.Parse(CostBox.Text) <= 150)
+            decimal currentPrice = decimal.Parse(CostBox.Text);
+            if (currentPrice.Equals(0))
+                MessageBox.Show(UserMessages.NoOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else if (decimal.Parse(CostBox.Text) <= 150)
             {
                 orderConfirm = new Thread(Helpers.OpenNewWindow<OrderConfirm>);
                 orderConfirm.SetApartmentState(ApartmentState.STA);
                 orderConfirm.Start();
             }
             else
-                MessageBox.Show(UserMessages.HugeOrder, WindowsTypes.Information.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(UserMessages.HugeOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
+            extrasPrice = 0;
             mainWindow = new Thread(Helpers.OpenNewWindow<MainWindow>);
             mainWindow.SetApartmentState(ApartmentState.STA);
             mainWindow.Start();
             Close();
         }
 
-        #endregion
+        private void ShowExtrasPanel(object sender)
+        {
+            ExtrasLabel.Show();
+            List<CheckBox> checkBoxes = new List<CheckBox>()
+            {
+                DoubleCheeseCheckbox,
+                HamCheckbox,
+                MushroomsCheckbox,
+                SalamiCheckbox
+            };
 
-        #region Margheritta
+            foreach (CheckBox checkBox in checkBoxes)
+            {
+                if (Helpers.GetContentFromObject(sender, "Text").Equals("+"))
+                    checkBox.Show();
+                else
+                    checkBox.Hide();
+
+                checkBox.Checked = false;
+                extrasGroupBox.Show();
+            }
+        }
+
+        private void ChangeExtrasPrice(CheckBox checkbox)
+        {
+            if (checkbox.Checked)
+                extrasPrice += 2;
+            else
+                extrasPrice -= 2;
+        }
+
         private void MargherittaPlus_Click(object sender, EventArgs e)
         {
-            //pizzaConfirm = new Thread(helpers.OpenNewWindow<PizzaConfirm>);
-            //pizzaConfirm.SetApartmentState(ApartmentState.STA);
-            //pizzaConfirm.Start();
+            ShowExtrasPanel(sender);
             Helpers.AddValueToCountBox(MargherittaCountBox);
         }
 
         private void MargherittaMinus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.SubstractValuInCountBox(MargherittaCountBox);
         }
 
@@ -105,19 +137,16 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Vegeteriana
         private void VegeterianaPlus_Click(object sender, EventArgs e)
         {
-            //pizzaConfirm = new Thread(helpers.OpenNewWindow<PizzaConfirm>);
-            //pizzaConfirm.SetApartmentState(ApartmentState.STA);
-            //pizzaConfirm.Start();
+            ShowExtrasPanel(sender);
             Helpers.AddValueToCountBox(VegeterianaCountBox);
         }
 
         private void VegeterianaMinus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.SubstractValuInCountBox(VegeterianaCountBox);
         }
 
@@ -125,16 +154,16 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Tosca
         private void ToscaPlus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.AddValueToCountBox(ToscaCountBox);
         }
 
         private void ToscaMinus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.SubstractValuInCountBox(ToscaCountBox);
         }
 
@@ -143,16 +172,15 @@ namespace PizzaApp
             ChangeCurrentPriceValue();
         }
 
-        #endregion
-
-        #region Venecia
         private void VeneciaPlus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.AddValueToCountBox(VeneciaCountBox);
         }
 
         private void VeneciaMinus_Click(object sender, EventArgs e)
         {
+            ShowExtrasPanel(sender);
             Helpers.SubstractValuInCountBox(VeneciaCountBox);
         }
 
@@ -160,9 +188,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region PorkHop
         private void PorkHopPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(PorkHopCountBox);
@@ -177,9 +203,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Fish
         private void FishPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(FishCountBox);
@@ -193,9 +217,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Hungarian Cake
         private void HungarianCakePlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(HungarianCountBox);
@@ -210,9 +232,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Tomato Soup
         private void TomatoSoupPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(TomatoSoupCountBox);
@@ -227,9 +247,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Chicken Soup
         private void ChickenSoupPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(ChickenSoupCountBox);
@@ -244,9 +262,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Coffie
         private void CoffiePlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(CoffieCountBox);
@@ -261,9 +277,7 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
 
-        #region Tea
         private void TeaPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(TeaCountBox);
@@ -279,9 +293,6 @@ namespace PizzaApp
             ChangeCurrentPriceValue();
         }
 
-        #endregion
-
-        #region Cola
         private void ColaPlus_Click(object sender, EventArgs e)
         {
             Helpers.AddValueToCountBox(ColaCountBox);
@@ -296,6 +307,29 @@ namespace PizzaApp
         {
             ChangeCurrentPriceValue();
         }
-        #endregion
+
+        private void SalamiCheckbox_Click(object sender, EventArgs e)
+        {
+            ChangeExtrasPrice(SalamiCheckbox);
+            ChangeCurrentPriceValue();
+        }
+
+        private void HamCheckbox_Click(object sender, EventArgs e)
+        {
+            ChangeExtrasPrice(HamCheckbox);
+            ChangeCurrentPriceValue();
+        }
+
+        private void MushroomsCheckbox_Click(object sender, EventArgs e)
+        {
+            ChangeExtrasPrice(MushroomsCheckbox);
+            ChangeCurrentPriceValue();
+        }
+
+        private void DoubleCheeseCheckbox_Click(object sender, EventArgs e)
+        {
+            ChangeExtrasPrice(DoubleCheeseCheckbox);
+            ChangeCurrentPriceValue();
+        }
     }
 }

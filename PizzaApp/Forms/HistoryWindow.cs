@@ -1,4 +1,5 @@
 ﻿using PizzaApp.Models.Database;
+using PizzaApp.Output_Messages;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,11 +15,18 @@ namespace PizzaApp
 
         private void HistoryWindow_Load(object sender, EventArgs e)
         {
-            using (AppDBContext db = new AppDBContext())
+            try
             {
-                dbDataGridView.DataSource = db.OrderHistory.ToList();
+                using (AppDBContext db = new AppDBContext())
+                {
+                    dbDataGridView.DataSource = db.OrderHistory.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(UserMessages.DatabaseConnectionProblem, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
         }
     }
 }
- 
