@@ -205,12 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography\Crypto.cs" />
-    <Compile Include="EmailManager.cs" />
+    <Compile Include="Logic\EmailManager.cs" />
     <Compile Include="Logic\Helpers.cs" />
-    <Compile Include="HistoryWindow.cs">
+    <Compile Include="Forms\HistoryWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HistoryWindow.Designer.cs">
+    <Compile Include="Forms\HistoryWindow.Designer.cs">
       <DependentUpon>HistoryWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\User\ValidationManager.cs" />
@@ -222,51 +222,50 @@
     <Compile Include="Models\Database\AppDBContext.cs" />
     <Compile Include="Models\Database\OrderHistory.cs" />
     <Compile Include="Models\EmailSendStatus.cs" />
-    <Compile Include="OrderConfirm.cs">
+    <Compile Include="Forms\OrderConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderConfirm.Designer.cs">
+    <Compile Include="Forms\OrderConfirm.Designer.cs">
       <DependentUpon>OrderConfirm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderWindow.cs">
+    <Compile Include="Forms\OrderWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderWindow.Designer.cs">
+    <Compile Include="Forms\OrderWindow.Designer.cs">
       <DependentUpon>OrderWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\WindowTypes.cs" />
-    <Compile Include="Output Messages\InternalMessages.cs" />
     <Compile Include="Output Messages\UserMessages.cs" />
-    <Compile Include="PizzaConfirm.cs">
+    <Compile Include="Forms\PizzaConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PizzaConfirm.Designer.cs">
+    <Compile Include="Forms\PizzaConfirm.Designer.cs">
       <DependentUpon>PizzaConfirm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HistoryWindow.resx">
+    <EmbeddedResource Include="Forms\HistoryWindow.resx">
       <DependentUpon>HistoryWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010061830040_OrderHistory.resx">
       <DependentUpon>202010061830040_OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderConfirm.resx">
+    <EmbeddedResource Include="Forms\OrderConfirm.resx">
       <DependentUpon>OrderConfirm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderWindow.resx">
+    <EmbeddedResource Include="Forms\OrderWindow.resx">
       <DependentUpon>OrderWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PizzaConfirm.resx">
+    <EmbeddedResource Include="Forms\PizzaConfirm.resx">
       <DependentUpon>PizzaConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

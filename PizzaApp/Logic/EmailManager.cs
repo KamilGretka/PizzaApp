@@ -1,6 +1,5 @@
 ﻿using PizzaApp.Cryptography;
 using PizzaApp.Models;
-using PizzaApp.Output_Messages;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -15,13 +14,13 @@ namespace PizzaApp
             Crypto cryptography = new Crypto();
             try
             {
-                string decryptedEmail = cryptography.Decrypt(Properties.Settings.Default.Email);
+                string decryptedEmail = cryptography.DecryptSentence(Properties.Settings.Default.Email);
                 using (MailMessage msg = new MailMessage())
                 using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
                 {
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(decryptedEmail, cryptography.Decrypt(Properties.Settings.Default.EmailPassword)),
+                    Credentials = new NetworkCredential(decryptedEmail, cryptography.DecryptSentence(Properties.Settings.Default.EmailPassword)),
                     Timeout = 100000,
                     EnableSsl = true
                 })

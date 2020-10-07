@@ -97,7 +97,6 @@
             this.Controls.Add(this.greetingsLabel);
             this.Name = "MainWindow";
             this.Text = "Welcome!";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

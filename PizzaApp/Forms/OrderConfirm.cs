@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using PizzaApp.Logic.User;
+﻿using PizzaApp.Logic.User;
 using PizzaApp.Models;
 using PizzaApp.Models.Database;
 using PizzaApp.Output_Messages;
@@ -12,6 +11,7 @@ namespace PizzaApp
 {
     public partial class OrderConfirm : Form
     {
+        private const string emailBodyFormat = "<p>Your order has been procedeed and will be sended to adress: <b> {0} </b></p> <p> Personal details: {1}, {2} </p> <p> Additional note: {3} </p>";
         public OrderConfirm()
         {
             InitializeComponent();
@@ -25,11 +25,12 @@ namespace PizzaApp
                 validation.CheckEmail(EmailTextBox.Text),
                 validation.CheckString(FirstNameTextBox.Text),
                 validation.CheckString(LastNameTextBox.Text),
-                validation.CheckString(AdressTextBox.Text)
+                validation.CheckAdress(AdressTextBox.Text),
             };
+
             foreach (var validator in validators.Select(x => x).ToList())
             {
-                if (validator.Item2 != string.Empty)
+                if (!string.IsNullOrEmpty(validator.Item2))
                 {
                     MessageBox.Show(validator.Item2, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
@@ -38,18 +39,19 @@ namespace PizzaApp
 
             if (validators.All(x => x.Item1 == true))
             {
-                EmailSendStatus emailSendStatus = new EmailManager().SendEmail(EmailTextBox.Text, "Pizza Application Order",
-                                                                    $"<p> Your order has been procedeed and will be sended to adress: <b> {AdressTextBox.Text} </b></p>" +
-                                                                    $"<p> Personal details: {FirstNameTextBox.Text}, {LastNameTextBox.Text} </p>" +
-                                                                    $"<p> Additional note: { NotesTextBox.Text} </p> ");
+                var emailBody = string.Format(emailBodyFormat, AdressTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, NotesTextBox.Text);
+
+                EmailSendStatus emailSendStatus = new EmailManager().SendEmail(EmailTextBox.Text, "Pizza Application Order", emailBody);
 
                 if (emailSendStatus.SendSuccessfully == true)
+                {
                     MessageBox.Show(UserMessages.EmailSended, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AddHistoryRecordToDatabase();
+                }
                 else
                     MessageBox.Show(UserMessages.EmailFailedToSend, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                AddHistoryRecordToDatabase();
-                this.Close();
+                Close();
             }
         }
 

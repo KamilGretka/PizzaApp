@@ -4,8 +4,8 @@ namespace PizzaApp.Models
 {
     public class EmailSendStatus
     {
-        public bool SendSuccessfully;
+        public bool SendSuccessfully { get; set; }
 
-        public Exception SendEmailException;
+        public Exception SendEmailException { get; set; }
     }
 }

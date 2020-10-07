@@ -15,6 +15,5 @@ namespace PizzaApp.Models.Database
         public string OrderMessage { get; set; }
 
         public string CustomerName { get; set; }
-
     }
 }

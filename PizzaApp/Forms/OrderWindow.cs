@@ -10,7 +10,6 @@ namespace PizzaApp
 {
     public partial class OrderWindow : Form
     {
-        readonly Helpers helpers = new Helpers();
         Thread orderConfirm, mainWindow;
 
         public OrderWindow()
@@ -27,7 +26,7 @@ namespace PizzaApp
             }
             catch (Exception)
             {
-                throw new Exception(InternalMessages.AppConfigParsingError);
+                MessageBox.Show("Invalid parameter");
             }
         }
         private List<float> GenerateOrderList()
@@ -70,7 +69,7 @@ namespace PizzaApp
                 MessageBox.Show(UserMessages.NoOrder);
             else if (float.Parse(CostBox.Text) <= 150)
             {
-                orderConfirm = new Thread(helpers.OpenNewWindow<OrderConfirm>);
+                orderConfirm = new Thread(Helpers.OpenNewWindow<OrderConfirm>);
                 orderConfirm.SetApartmentState(ApartmentState.STA);
                 orderConfirm.Start();
             }
@@ -80,10 +79,10 @@ namespace PizzaApp
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            mainWindow = new Thread(helpers.OpenNewWindow<MainWindow>);
+            mainWindow = new Thread(Helpers.OpenNewWindow<MainWindow>);
             mainWindow.SetApartmentState(ApartmentState.STA);
             mainWindow.Start();
-            this.Close();
+            Close();
         }
 
         #endregion
@@ -94,12 +93,12 @@ namespace PizzaApp
             //pizzaConfirm = new Thread(helpers.OpenNewWindow<PizzaConfirm>);
             //pizzaConfirm.SetApartmentState(ApartmentState.STA);
             //pizzaConfirm.Start();
-            helpers.AddValueToCountBox(MargherittaCountBox);
+            Helpers.AddValueToCountBox(MargherittaCountBox);
         }
 
         private void MargherittaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(MargherittaCountBox);
+            Helpers.SubstractValuInCountBox(MargherittaCountBox);
         }
 
         private void MargherittaCountBox_TextChanged(object sender, EventArgs e)
@@ -114,12 +113,12 @@ namespace PizzaApp
             //pizzaConfirm = new Thread(helpers.OpenNewWindow<PizzaConfirm>);
             //pizzaConfirm.SetApartmentState(ApartmentState.STA);
             //pizzaConfirm.Start();
-            helpers.AddValueToCountBox(VegeterianaCountBox);
+            Helpers.AddValueToCountBox(VegeterianaCountBox);
         }
 
         private void VegeterianaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(VegeterianaCountBox);
+            Helpers.SubstractValuInCountBox(VegeterianaCountBox);
         }
 
         private void VegeterianaCountBox_TextChanged(object sender, EventArgs e)
@@ -131,12 +130,12 @@ namespace PizzaApp
         #region Tosca
         private void ToscaPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(ToscaCountBox);
+            Helpers.AddValueToCountBox(ToscaCountBox);
         }
 
         private void ToscaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(ToscaCountBox);
+            Helpers.SubstractValuInCountBox(ToscaCountBox);
         }
 
         private void Tosca_TextChanged(object sender, EventArgs e)
@@ -149,12 +148,12 @@ namespace PizzaApp
         #region Venecia
         private void VeneciaPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(VeneciaCountBox);
+            Helpers.AddValueToCountBox(VeneciaCountBox);
         }
 
         private void VeneciaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(VeneciaCountBox);
+            Helpers.SubstractValuInCountBox(VeneciaCountBox);
         }
 
         private void Venecia_TextChanged(object sender, EventArgs e)
@@ -166,12 +165,12 @@ namespace PizzaApp
         #region PorkHop
         private void PorkHopPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(PorkHopCountBox);
+            Helpers.AddValueToCountBox(PorkHopCountBox);
         }
 
         private void PorkhopMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(PorkHopCountBox);
+            Helpers.SubstractValuInCountBox(PorkHopCountBox);
         }
 
         private void Porkhop_TextChanged(object sender, EventArgs e)
@@ -183,12 +182,12 @@ namespace PizzaApp
         #region Fish
         private void FishPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(FishCountBox);
+            Helpers.AddValueToCountBox(FishCountBox);
         }
 
         private void FishMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(FishCountBox);
+            Helpers.SubstractValuInCountBox(FishCountBox);
         }
         private void Fish_TextChanged(object sender, EventArgs e)
         {
@@ -199,12 +198,12 @@ namespace PizzaApp
         #region Hungarian Cake
         private void HungarianCakePlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(HungarianCountBox);
+            Helpers.AddValueToCountBox(HungarianCountBox);
         }
 
         private void HungarianCakeMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(HungarianCountBox);
+            Helpers.SubstractValuInCountBox(HungarianCountBox);
         }
 
         private void HungarianCake_TextChanged(object sender, EventArgs e)
@@ -216,12 +215,12 @@ namespace PizzaApp
         #region Tomato Soup
         private void TomatoSoupPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(TomatoSoupCountBox);
+            Helpers.AddValueToCountBox(TomatoSoupCountBox);
         }
 
         private void TomatoSoupMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(TomatoSoupCountBox);
+            Helpers.SubstractValuInCountBox(TomatoSoupCountBox);
         }
 
         private void TomatoSoup_TextChanged(object sender, EventArgs e)
@@ -233,12 +232,12 @@ namespace PizzaApp
         #region Chicken Soup
         private void ChickenSoupPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(ChickenSoupCountBox);
+            Helpers.AddValueToCountBox(ChickenSoupCountBox);
         }
 
         private void ChickenSoupMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(ChickenSoupCountBox);
+            Helpers.SubstractValuInCountBox(ChickenSoupCountBox);
         }
 
         private void ChickenSoup_TextChanged(object sender, EventArgs e)
@@ -250,12 +249,12 @@ namespace PizzaApp
         #region Coffie
         private void CoffiePlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(CoffieCountBox);
+            Helpers.AddValueToCountBox(CoffieCountBox);
         }
 
         private void CoffieMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(CoffieCountBox);
+            Helpers.SubstractValuInCountBox(CoffieCountBox);
         }
 
         private void Coffie_TextChanged(object sender, EventArgs e)
@@ -267,12 +266,12 @@ namespace PizzaApp
         #region Tea
         private void TeaPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(TeaCountBox);
+            Helpers.AddValueToCountBox(TeaCountBox);
         }
 
         private void TeaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(TeaCountBox);
+            Helpers.SubstractValuInCountBox(TeaCountBox);
         }
 
         private void Tea_TextChanged(object sender, EventArgs e)
@@ -285,12 +284,12 @@ namespace PizzaApp
         #region Cola
         private void ColaPlus_Click(object sender, EventArgs e)
         {
-            helpers.AddValueToCountBox(ColaCountBox);
+            Helpers.AddValueToCountBox(ColaCountBox);
         }
 
         private void ColaMinus_Click(object sender, EventArgs e)
         {
-            helpers.SubstractValuInCountBox(ColaCountBox);
+           Helpers.SubstractValuInCountBox(ColaCountBox);
         }
 
         private void Cola_TextChanged(object sender, EventArgs e)
