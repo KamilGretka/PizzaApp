@@ -22,6 +22,7 @@ namespace PizzaApp
 
         private void HistoryButton_Click(object sender, EventArgs e)
         {
+            Close();
             historyWindow = new Thread(Helpers.OpenNewWindow<HistoryWindow>);
             historyWindow.SetApartmentState(ApartmentState.STA);
             historyWindow.Start();

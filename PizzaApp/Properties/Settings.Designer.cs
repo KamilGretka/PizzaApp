@@ -25,7 +25,7 @@ namespace PizzaApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2B+pw1SPMUqTDRyjMnk3mQAAAAACAAAAAAAQZgAAAAEAACAAAAArXgs8eFIT07pfn01aL0kVTn/SJqDMFjn0fp6/1BnNMAAAAAAOgAAAAAIAACAAAAChejkDI+iSRXm8nD6f1ri18ijdDuCohTww2Kc7p1LdUkAAAADjzUuUcjLtsYoGFFZh29Tj8YFZ4y1snFCxrNZnepENpBVHnvEYLEhwCZa7BX//jxlCizH388kqdKkoZ6Yjc+7+QAAAACWgAsPOQPxAqUMmvVssmk81WrBwqzNZ8dqEE1ATJjb+FLP/QEwoelJmedKMGUaDzQVg0K+XR4lK0+xvn+Jkf9I=")]
+        [global::System.Configuration.DefaultSettingValueAttribute("tJyDrPxxOyTfRIVsS+GShU7jbTalD6E3dB8x+JzHHs4=")]
         public string Email {
             get {
                 return ((string)(this["Email"]));
@@ -34,10 +34,19 @@ namespace PizzaApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyKIuXEsh+k6DnjTIYBuw8wQAAAACAAAAAAAQZgAAAAEAACAAAABDpTM9hoN2yvQI2PrzVa9BVxisfNYd+oXS9h9aqKpwxwAAAAAOgAAAAAIAACAAAADFE6/y8AmYVn9nJZFsR0bEEjXBJmn+8CF9oV9aq8PFDTAAAACjwXwaleTd9N7DZrQzTG4wPGj7RiPwLxXb0it+ips7cR2t/vvN8cOJwEBTjw9yuKBAAAAAWzVXDNCeCiQ/J+2UxkB+hmm2uM6VFyQMiCvRWQjKju7mh+rHhgCxOrRydGcq4r2sNLCNzms8Ted+gKjkHgJ92w==")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+04PB7Ro47TZuLkdTBm38TFpYmVgu5Sf")]
         public string EmailPassword {
             get {
                 return ((string)(this["EmailPassword"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MYaYGwtsMYAfg9WatYcS")]
+        public string Hash {
+            get {
+                return ((string)(this["Hash"]));
             }
         }
     }

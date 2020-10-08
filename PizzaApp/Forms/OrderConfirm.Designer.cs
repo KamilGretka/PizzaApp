@@ -181,6 +181,8 @@
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.moreInformationLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "OrderConfirm";
             this.Text = "Confirm your order";
             this.ResumeLayout(false);

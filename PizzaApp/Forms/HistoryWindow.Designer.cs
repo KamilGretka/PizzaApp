@@ -30,6 +30,7 @@
         {
             this.dbDataGridView = new System.Windows.Forms.DataGridView();
             this.RestaurantOrderLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,13 +54,26 @@
             this.RestaurantOrderLabel.TabIndex = 1;
             this.RestaurantOrderLabel.Text = "Restaurant order history";
             // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(12, 11);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
+            this.BackButton.TabIndex = 10;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // HistoryWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 221);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.RestaurantOrderLabel);
             this.Controls.Add(this.dbDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "HistoryWindow";
             this.Text = "Order History";
             this.Load += new System.EventHandler(this.HistoryWindow_Load);
@@ -73,5 +87,6 @@
 
         private System.Windows.Forms.DataGridView dbDataGridView;
         private System.Windows.Forms.Label RestaurantOrderLabel;
+        private System.Windows.Forms.Button BackButton;
     }
 }

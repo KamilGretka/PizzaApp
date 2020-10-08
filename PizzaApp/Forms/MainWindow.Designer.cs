@@ -89,12 +89,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(435, 225);
             this.Controls.Add(this.OrderButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.greetingsLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Welcome!";
             this.ResumeLayout(false);

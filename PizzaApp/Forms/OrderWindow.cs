@@ -1,4 +1,5 @@
-﻿using PizzaApp.OutputMessages;
+﻿using PizzaApp.Cryptography;
+using PizzaApp.OutputMessages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -66,8 +67,15 @@ namespace PizzaApp
             return countedOrderList;
         }
 
+        public static Form IsFormAlreadyOpen(Type formType)
+        {
+            return Application.OpenForms.Cast<Form>().FirstOrDefault(openForm => openForm.GetType() == formType);
+        }
+
+
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
+            Crypto crypto = new Crypto();
             decimal currentPrice = decimal.Parse(CostBox.Text);
             if (currentPrice.Equals(0))
                 MessageBox.Show(UserMessages.NoOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -79,6 +87,8 @@ namespace PizzaApp
             }
             else
                 MessageBox.Show(UserMessages.HugeOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Close();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -300,7 +310,7 @@ namespace PizzaApp
 
         private void ColaMinus_Click(object sender, EventArgs e)
         {
-           Helpers.SubstractValuInCountBox(ColaCountBox);
+            Helpers.SubstractValuInCountBox(ColaCountBox);
         }
 
         private void Cola_TextChanged(object sender, EventArgs e)

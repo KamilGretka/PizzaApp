@@ -747,7 +747,7 @@
             // 
             this.ExtrasLabel.AutoSize = true;
             this.ExtrasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ExtrasLabel.Location = new System.Drawing.Point(385, 26);
+            this.ExtrasLabel.Location = new System.Drawing.Point(397, 26);
             this.ExtrasLabel.Name = "ExtrasLabel";
             this.ExtrasLabel.Size = new System.Drawing.Size(164, 24);
             this.ExtrasLabel.TabIndex = 10;
@@ -799,6 +799,8 @@
             // 
             // extrasGroupBox
             // 
+            this.extrasGroupBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.extrasGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.extrasGroupBox.Controls.Add(this.DoubleCheeseCheckbox);
             this.extrasGroupBox.Controls.Add(this.MushroomsCheckbox);
             this.extrasGroupBox.Controls.Add(this.SalamiCheckbox);
@@ -813,6 +815,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(594, 241);
             this.Controls.Add(this.extrasGroupBox);
             this.Controls.Add(this.ExtrasLabel);
@@ -822,6 +825,8 @@
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.OrderTabs);
             this.Controls.Add(this.CostBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "OrderWindow";
             this.Text = "Making Order";
             this.Load += new System.EventHandler(this.OrderWindow_Load);
