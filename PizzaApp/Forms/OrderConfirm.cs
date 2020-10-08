@@ -1,7 +1,7 @@
 ﻿using PizzaApp.Logic.User;
 using PizzaApp.Models;
 using PizzaApp.Models.Database;
-using PizzaApp.Output_Messages;
+using PizzaApp.OutputMessages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace PizzaApp
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            ValidationManager validation = new ValidationManager();
+            DataValidationManager validation = new DataValidationManager();
             List<(bool, string)> validators = new List<(bool, string)>()
             {
                 validation.CheckEmail(EmailTextBox.Text),

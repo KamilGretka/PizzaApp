@@ -213,7 +213,7 @@
     <Compile Include="Forms\HistoryWindow.Designer.cs">
       <DependentUpon>HistoryWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\User\ValidationManager.cs" />
+    <Compile Include="Logic\User\DataValidationManager.cs" />
     <Compile Include="Migrations\202010061830040_OrderHistory.cs" />
     <Compile Include="Migrations\202010061830040_OrderHistory.designer.cs">
       <DependentUpon>202010061830040_OrderHistory.cs</DependentUpon>
@@ -240,8 +240,8 @@
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Output Messages\WindowTypes.cs" />
-    <Compile Include="Output Messages\UserMessages.cs" />
+    <Compile Include="OutputMessages\WindowTypes.cs" />
+    <Compile Include="OutputMessages\UserMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\HistoryWindow.resx">

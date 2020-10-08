@@ -1,5 +1,5 @@
 ﻿using PizzaApp.Models.Database;
-using PizzaApp.Output_Messages;
+using PizzaApp.OutputMessages;
 using System;
 using System.Linq;
 using System.Windows.Forms;
