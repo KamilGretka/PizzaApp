@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaApp.Logic;
+using System;
 using System.Windows.Forms;
 
 namespace PizzaApp.Forms

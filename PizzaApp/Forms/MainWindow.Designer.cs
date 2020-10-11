@@ -1,4 +1,4 @@
-﻿namespace PizzaApp
+﻿namespace PizzaApp.Forms
 {
     partial class MainWindow
     {
@@ -41,9 +41,9 @@
             this.greetingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.greetingsLabel.Location = new System.Drawing.Point(12, 9);
             this.greetingsLabel.Name = "greetingsLabel";
-            this.greetingsLabel.Size = new System.Drawing.Size(416, 24);
+            this.greetingsLabel.Size = new System.Drawing.Size(407, 24);
             this.greetingsLabel.TabIndex = 0;
-            this.greetingsLabel.Text = "Thanks you for using our Pizza Order application";
+            this.greetingsLabel.Text = "Thank you for using our Pizza Order application";
             // 
             // questionLabel
             // 
@@ -101,7 +101,7 @@
             this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Welcome!";
+            this.Text = "Welcome";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

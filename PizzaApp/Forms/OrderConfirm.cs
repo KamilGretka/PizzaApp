@@ -1,13 +1,13 @@
-﻿using PizzaApp.Logic.User;
+﻿using PizzaApp.Logic;
+using PizzaApp.Logic.User;
 using PizzaApp.Models;
 using PizzaApp.Models.Database;
 using PizzaApp.OutputMessages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace PizzaApp
+namespace PizzaApp.Forms
 {
     public partial class OrderConfirm : Form
     {
@@ -19,16 +19,15 @@ namespace PizzaApp
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            DataValidationManager validation = new DataValidationManager();
             List<(bool, string)> validators = new List<(bool, string)>()
             {
-                validation.CheckEmail(EmailTextBox.Text),
-                validation.CheckFirstName(FirstNameTextBox.Text),
-                validation.CheckLastName(LastNameTextBox.Text),
-                validation.CheckAddress(AddressTextBox.Text),
+                DataValidationManager.CheckEmail(EmailTextBox.Text),
+                DataValidationManager.CheckFirstName(FirstNameTextBox.Text),
+                DataValidationManager.CheckLastName(LastNameTextBox.Text),
+                DataValidationManager.CheckAddress(AddressTextBox.Text),
             };
 
-            foreach (var validator in validators.Select(x => x).ToList())
+            foreach (var validator in validators)
             {
                 if (!string.IsNullOrEmpty(validator.Item2))
                 {
@@ -37,17 +36,17 @@ namespace PizzaApp
                 }
             }
 
-            if (validators.All(x => x.Item1 == true))
+            if (validators.TrueForAll(x => x.Item1))
             {
                 var emailBody = string.Format(emailBodyFormat, AddressTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, NotesTextBox.Text);
 
                 EmailSendStatus emailSendStatus = new EmailManager().SendEmail(EmailTextBox.Text, "Pizza Application Order", emailBody);
 
-                if (emailSendStatus.SendSuccessfully == true)
+                if (emailSendStatus.SendSuccessfully)
                 {
                     MessageBox.Show(UserMessages.EmailSended, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AddHistoryRecordToDatabase();
-                    Helpers.ClearAllTextBoxData();
+                    UserActionHelpers.ClearAllTextBoxData();
                     Hide();
                     WindowsManagement.GetMainWindowInstance().Show();
                 }
@@ -75,8 +74,8 @@ namespace PizzaApp
                 }
             }
             catch (Exception)
-            { 
-                //Information from this exception should go to logs (connection with database failed, record not added)
+            {
+                MessageBox.Show(UserMessages.DatabaseRecordNotAdded, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

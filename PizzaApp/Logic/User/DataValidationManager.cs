@@ -6,9 +6,9 @@ using System.Net.Mail;
 
 namespace PizzaApp.Logic.User
 {
-    public class DataValidationManager
+    public static class DataValidationManager
     {
-        public (bool, string) CheckEmail(string email)
+        public static (bool, string) CheckEmail(string email)
         {
             try
             {
@@ -21,24 +21,24 @@ namespace PizzaApp.Logic.User
             }
         }
 
-        public (bool, string) CheckFirstName(string firstName)
+        public static (bool, string) CheckFirstName(string firstName)
         {
             var result = CheckString(firstName);
             return result == true ? (result, string.Empty) : (false, UserMessages.InvalidFirstName);
         }
 
-        public (bool, string) CheckLastName(string lastName)
+        public static (bool, string) CheckLastName(string lastName)
         {
             var result = CheckString(lastName);
             return CheckString(lastName) == true ? (result, string.Empty) : (false, UserMessages.InvalidLastName);
         }
 
-        public bool CheckString(string sentence)
+        public static bool CheckString(string sentence)
         {
              return sentence.All(char.IsLetter) && sentence != string.Empty;
         }
 
-        public (bool, string) CheckAddress(string address)
+        public static (bool, string) CheckAddress(string address)
         {
             if (address.Any(char.IsDigit) && address.Any(char.IsLetter))
                 return (true, string.Empty);

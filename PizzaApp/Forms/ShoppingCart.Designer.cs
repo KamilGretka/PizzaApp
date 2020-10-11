@@ -35,15 +35,18 @@
             // 
             // ShopCartGridView
             // 
+            this.ShopCartGridView.AllowUserToAddRows = false;
+            this.ShopCartGridView.AllowUserToDeleteRows = false;
             this.ShopCartGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ShopCartGridView.Location = new System.Drawing.Point(0, 0);
             this.ShopCartGridView.Name = "ShopCartGridView";
-            this.ShopCartGridView.Size = new System.Drawing.Size(538, 248);
+            this.ShopCartGridView.ReadOnly = true;
+            this.ShopCartGridView.Size = new System.Drawing.Size(424, 248);
             this.ShopCartGridView.TabIndex = 0;
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(463, 225);
+            this.BackButton.Location = new System.Drawing.Point(349, 225);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 11;
@@ -51,16 +54,16 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // ShopCart
+            // ShoppingCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 247);
+            this.ClientSize = new System.Drawing.Size(424, 247);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ShopCartGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "ShopCart";
+            this.Name = "ShoppingCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop Cart";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShopCart_FormClosing);

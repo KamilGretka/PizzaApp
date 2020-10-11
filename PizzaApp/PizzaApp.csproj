@@ -204,7 +204,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cryptography\Crypto.cs" />
+    <Compile Include="Cryptography\CryptographyHelper.cs" />
     <Compile Include="Forms\ExtrasPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,7 +218,7 @@
       <DependentUpon>ShoppingCart.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\EmailManager.cs" />
-    <Compile Include="Logic\Helpers.cs" />
+    <Compile Include="Logic\User\UserActionHelpers.cs" />
     <Compile Include="Forms\HistoryWindow.cs">
       <SubType>Form</SubType>
     </Compile>

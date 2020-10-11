@@ -1,10 +1,11 @@
-﻿using PizzaApp.Models.Database;
+﻿using PizzaApp.Logic;
+using PizzaApp.Models.Database;
 using PizzaApp.OutputMessages;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PizzaApp
+namespace PizzaApp.Forms
 {
     public partial class HistoryWindow : Form
     {

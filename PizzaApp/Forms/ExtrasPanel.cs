@@ -1,4 +1,6 @@
-﻿using PizzaApp.Models;
+﻿using PizzaApp.Logic;
+using PizzaApp.Logic.User;
+using PizzaApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +18,7 @@ namespace PizzaApp.Forms
 
         private void BackButton_Click(object sender, EventArgs e)
         {
+            WindowsManagement.GetOrderWindowInstance().Show();
             Hide();
         }
 
@@ -45,9 +48,11 @@ namespace PizzaApp.Forms
                 }
             }
 
-            order.Extras = extras.Aggregate((i, j) => string.Format("{0}, {1}", i, j));
+            if(extras.Any())
+                order.Extras = extras.Aggregate((i, j) => string.Format("{0}, {1}", i, j));
+
             orderWindow.orderList.Add(order);
-            Helpers.AddValueToCountBox(choosedFoodType);
+            UserActionHelpers.AddValueToCountBox(choosedFoodType);
             Hide();
             orderWindow.Show();
         }

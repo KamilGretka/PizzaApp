@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PizzaApp.Cryptography
 {
-    internal class Crypto
+    internal static class CryptographyHelper
     {
-        internal string DecryptSentence(string sentence)
+        internal static string DecryptSentence(string sentence)
         {
             byte[] data = Convert.FromBase64String(sentence);
 

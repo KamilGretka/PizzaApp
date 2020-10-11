@@ -1,4 +1,4 @@
-﻿namespace PizzaApp
+﻿namespace PizzaApp.Forms
 {
     partial class OrderWindow
     {

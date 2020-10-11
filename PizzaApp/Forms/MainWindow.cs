@@ -1,7 +1,8 @@
-﻿using System;
+﻿using PizzaApp.Logic;
+using System;
 using System.Windows.Forms;
 
-namespace PizzaApp
+namespace PizzaApp.Forms
 {
     public partial class MainWindow : Form
     {

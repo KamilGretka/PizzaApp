@@ -1,4 +1,4 @@
-﻿namespace PizzaApp
+﻿namespace PizzaApp.Forms
 {
     partial class OrderConfirm
     {
@@ -49,9 +49,9 @@
             this.moreInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.moreInformationLabel.Location = new System.Drawing.Point(31, 9);
             this.moreInformationLabel.Name = "moreInformationLabel";
-            this.moreInformationLabel.Size = new System.Drawing.Size(415, 24);
+            this.moreInformationLabel.Size = new System.Drawing.Size(410, 24);
             this.moreInformationLabel.TabIndex = 0;
-            this.moreInformationLabel.Text = "Before we proceed, we need more informations!";
+            this.moreInformationLabel.Text = "Before we proceed, we need more informations";
             // 
             // EmailTextBox
             // 

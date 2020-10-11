@@ -1,6 +1,6 @@
 ﻿using PizzaApp.Forms;
 
-namespace PizzaApp
+namespace PizzaApp.Logic
 {
     public class WindowsManagement
     {

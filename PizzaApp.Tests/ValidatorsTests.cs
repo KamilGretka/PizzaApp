@@ -14,7 +14,7 @@ namespace PizzaApp.Tests
             string email = "test%test.com";
 
             //Act
-            var result = new DataValidationManager().CheckEmail(email);
+            var result = DataValidationManager.CheckEmail(email);
 
             //Assert
             Assert.Equal(expected, result);
@@ -28,7 +28,7 @@ namespace PizzaApp.Tests
             string email = "test@test.com";
 
             //Act
-            var result = new DataValidationManager().CheckEmail(email);
+            var result = DataValidationManager.CheckEmail(email);
 
             //Assert
             Assert.Equal(expected, result);
@@ -45,7 +45,7 @@ namespace PizzaApp.Tests
             (bool, string) expected = (false, UserMessages.InvalidFirstName);
 
             //Act
-            var result = new DataValidationManager().CheckFirstName(sentence);
+            var result = DataValidationManager.CheckFirstName(sentence);
 
             //Assert
             Assert.Equal(expected, result);
@@ -59,7 +59,7 @@ namespace PizzaApp.Tests
             string userName = "Kamil";
 
             //Act
-            var result = new DataValidationManager().CheckFirstName(userName);
+            var result = DataValidationManager.CheckFirstName(userName);
 
             //Assert
             Assert.Equal(expected, result);
@@ -74,7 +74,7 @@ namespace PizzaApp.Tests
             (bool, string) expected = (false, UserMessages.InvalidAddressFormat);
 
             //Act
-            var result = new DataValidationManager().CheckAddress(adress);
+            var result = DataValidationManager.CheckAddress(adress);
 
             //Assert
             Assert.Equal(expected, result);
@@ -88,7 +88,7 @@ namespace PizzaApp.Tests
             string adress = "Koktajlowo 16";
 
             //Act
-            var result = new DataValidationManager().CheckAddress(adress);
+            var result = DataValidationManager.CheckAddress(adress);
 
             //Assert
             Assert.Equal(expected, result);

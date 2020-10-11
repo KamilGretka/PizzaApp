@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PizzaApp
+namespace PizzaApp.Logic.User
 {
-    internal static class Helpers
+    internal static class UserActionHelpers
     {
         internal static void AddValueToCountBox(TextBox countTextBox)
         {
             int value = int.Parse(countTextBox.Text);
-                countTextBox.Text = (value + 1).ToString();
+            countTextBox.Text = (value + 1).ToString();
         }
 
         internal static void SubstractValuInCountBox(TextBox countTextBox)

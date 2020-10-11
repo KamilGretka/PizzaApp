@@ -87,9 +87,9 @@
             this.ExtrasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ExtrasLabel.Location = new System.Drawing.Point(19, 9);
             this.ExtrasLabel.Name = "ExtrasLabel";
-            this.ExtrasLabel.Size = new System.Drawing.Size(164, 24);
+            this.ExtrasLabel.Size = new System.Drawing.Size(159, 24);
             this.ExtrasLabel.TabIndex = 16;
-            this.ExtrasLabel.Text = "Select your extras!";
+            this.ExtrasLabel.Text = "Select your extras";
             // 
             // ConfirmButton
             // 
