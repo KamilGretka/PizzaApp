@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PizzaApp
 {
     public partial class MainWindow : Form
     {
-        Thread orderWindowThread, historyWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -14,21 +12,22 @@ namespace PizzaApp
 
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            Close();
-            orderWindowThread = new Thread(Helpers.OpenNewWindow<OrderWindow>);
-            orderWindowThread.SetApartmentState(ApartmentState.STA);
-            orderWindowThread.Start();
+            Hide();
+            WindowsManagement.GetOrderWindowInstance().Show();
         }
 
         private void HistoryButton_Click(object sender, EventArgs e)
         {
-            Close();
-            historyWindow = new Thread(Helpers.OpenNewWindow<HistoryWindow>);
-            historyWindow.SetApartmentState(ApartmentState.STA);
-            historyWindow.Start();
+            Hide();
+            WindowsManagement.GetHistoryWindowInstance().Show();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

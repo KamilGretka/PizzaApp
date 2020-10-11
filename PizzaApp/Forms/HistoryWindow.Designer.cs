@@ -43,6 +43,7 @@
             this.dbDataGridView.Name = "dbDataGridView";
             this.dbDataGridView.Size = new System.Drawing.Size(545, 153);
             this.dbDataGridView.TabIndex = 0;
+            this.dbDataGridView.TabStop = false;
             // 
             // RestaurantOrderLabel
             // 
@@ -75,8 +76,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "HistoryWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order History";
-            this.Load += new System.EventHandler(this.HistoryWindow_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HistoryWindow_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.HistoryWindow_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dbDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

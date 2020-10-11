@@ -29,75 +29,69 @@
         private void InitializeComponent()
         {
             this.MargherittaPlus = new System.Windows.Forms.Button();
-            this.MargherittaCountBox = new System.Windows.Forms.TextBox();
+            this.Margheritta = new System.Windows.Forms.TextBox();
             this.CostBox = new System.Windows.Forms.TextBox();
             this.MargherittaLabel = new System.Windows.Forms.Label();
             this.OrderTabs = new System.Windows.Forms.TabControl();
             this.PizzaTab = new System.Windows.Forms.TabPage();
             this.VeneciaPlus = new System.Windows.Forms.Button();
-            this.VeneciaCountBox = new System.Windows.Forms.TextBox();
+            this.MargherittaMinus = new System.Windows.Forms.Button();
+            this.Venecia = new System.Windows.Forms.TextBox();
             this.VeneciaMinus = new System.Windows.Forms.Button();
             this.VeneciaLabel = new System.Windows.Forms.Label();
             this.ToscaPlus = new System.Windows.Forms.Button();
-            this.ToscaCountBox = new System.Windows.Forms.TextBox();
+            this.Tosca = new System.Windows.Forms.TextBox();
             this.ToscaMinus = new System.Windows.Forms.Button();
             this.ToscaLabel = new System.Windows.Forms.Label();
             this.VegeterianaPlus = new System.Windows.Forms.Button();
-            this.VegeterianaCountBox = new System.Windows.Forms.TextBox();
+            this.Vegetariana = new System.Windows.Forms.TextBox();
             this.VegeterianaMinus = new System.Windows.Forms.Button();
             this.VegeterianaLabel = new System.Windows.Forms.Label();
-            this.MargherittaMinus = new System.Windows.Forms.Button();
             this.DishesTab = new System.Windows.Forms.TabPage();
-            this.HungarianCountBox = new System.Windows.Forms.TextBox();
+            this.Hungarian = new System.Windows.Forms.TextBox();
             this.HungarianCakePlus = new System.Windows.Forms.Button();
             this.HungarianCakeMinus = new System.Windows.Forms.Button();
             this.HungarianCakeLabel = new System.Windows.Forms.Label();
             this.FishPlus = new System.Windows.Forms.Button();
-            this.FishCountBox = new System.Windows.Forms.TextBox();
+            this.Fish = new System.Windows.Forms.TextBox();
             this.FishMinus = new System.Windows.Forms.Button();
             this.FishFriesLabel = new System.Windows.Forms.Label();
             this.PorkHopPlus = new System.Windows.Forms.Button();
-            this.PorkHopCountBox = new System.Windows.Forms.TextBox();
+            this.PorkHop = new System.Windows.Forms.TextBox();
             this.PorkhopMinus = new System.Windows.Forms.Button();
             this.PorkHopLabel = new System.Windows.Forms.Label();
             this.SoupsTab = new System.Windows.Forms.TabPage();
             this.ChickenSoupPlus = new System.Windows.Forms.Button();
-            this.ChickenSoupCountBox = new System.Windows.Forms.TextBox();
+            this.ChickenSoup = new System.Windows.Forms.TextBox();
             this.ChickenSoupMinus = new System.Windows.Forms.Button();
             this.ChickenSoulLabel = new System.Windows.Forms.Label();
             this.TomatoSoupPlus = new System.Windows.Forms.Button();
-            this.TomatoSoupCountBox = new System.Windows.Forms.TextBox();
+            this.TomatoSoup = new System.Windows.Forms.TextBox();
             this.TomatoSoupLabel = new System.Windows.Forms.Label();
             this.TomatoSoupMinus = new System.Windows.Forms.Button();
             this.DrinksTab = new System.Windows.Forms.TabPage();
             this.ColaPlus = new System.Windows.Forms.Button();
-            this.ColaCountBox = new System.Windows.Forms.TextBox();
+            this.Cola = new System.Windows.Forms.TextBox();
             this.ColaMinus = new System.Windows.Forms.Button();
             this.ColaLabel = new System.Windows.Forms.Label();
             this.TeaPlus = new System.Windows.Forms.Button();
-            this.TeaCountBox = new System.Windows.Forms.TextBox();
+            this.Tea = new System.Windows.Forms.TextBox();
             this.TeaMinus = new System.Windows.Forms.Button();
             this.TeaLabel = new System.Windows.Forms.Label();
             this.CoffiePlus = new System.Windows.Forms.Button();
-            this.CoffieCountBox = new System.Windows.Forms.TextBox();
+            this.Coffie = new System.Windows.Forms.TextBox();
             this.CoffieLabel = new System.Windows.Forms.Label();
             this.CoffieMinus = new System.Windows.Forms.Button();
             this.CostLabel = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.ZlotyLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
-            this.ExtrasLabel = new System.Windows.Forms.Label();
-            this.DoubleCheeseCheckbox = new System.Windows.Forms.CheckBox();
-            this.SalamiCheckbox = new System.Windows.Forms.CheckBox();
-            this.HamCheckbox = new System.Windows.Forms.CheckBox();
-            this.MushroomsCheckbox = new System.Windows.Forms.CheckBox();
-            this.extrasGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShopCartButton = new System.Windows.Forms.Button();
             this.OrderTabs.SuspendLayout();
             this.PizzaTab.SuspendLayout();
             this.DishesTab.SuspendLayout();
             this.SoupsTab.SuspendLayout();
             this.DrinksTab.SuspendLayout();
-            this.extrasGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MargherittaPlus
@@ -105,29 +99,31 @@
             this.MargherittaPlus.Location = new System.Drawing.Point(307, 19);
             this.MargherittaPlus.Name = "MargherittaPlus";
             this.MargherittaPlus.Size = new System.Drawing.Size(40, 20);
-            this.MargherittaPlus.TabIndex = 0;
+            this.MargherittaPlus.TabIndex = 3;
             this.MargherittaPlus.Text = "+";
             this.MargherittaPlus.UseVisualStyleBackColor = true;
             this.MargherittaPlus.Click += new System.EventHandler(this.MargherittaPlus_Click);
             // 
-            // MargherittaCountBox
+            // Margheritta
             // 
-            this.MargherittaCountBox.Location = new System.Drawing.Point(261, 19);
-            this.MargherittaCountBox.Name = "MargherittaCountBox";
-            this.MargherittaCountBox.ReadOnly = true;
-            this.MargherittaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.MargherittaCountBox.TabIndex = 1;
-            this.MargherittaCountBox.Text = "0";
-            this.MargherittaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MargherittaCountBox.TextChanged += new System.EventHandler(this.MargherittaCountBox_TextChanged);
+            this.Margheritta.Location = new System.Drawing.Point(261, 19);
+            this.Margheritta.Name = "Margheritta";
+            this.Margheritta.ReadOnly = true;
+            this.Margheritta.Size = new System.Drawing.Size(40, 20);
+            this.Margheritta.TabIndex = 2;
+            this.Margheritta.TabStop = false;
+            this.Margheritta.Text = "0";
+            this.Margheritta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Margheritta.TextChanged += new System.EventHandler(this.MargherittaCountBox_TextChanged);
             // 
             // CostBox
             // 
-            this.CostBox.Location = new System.Drawing.Point(214, 204);
+            this.CostBox.Location = new System.Drawing.Point(379, 63);
             this.CostBox.Name = "CostBox";
             this.CostBox.ReadOnly = true;
             this.CostBox.Size = new System.Drawing.Size(100, 20);
-            this.CostBox.TabIndex = 2;
+            this.CostBox.TabIndex = 0;
+            this.CostBox.TabStop = false;
             this.CostBox.Text = "0";
             this.CostBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -151,28 +147,29 @@
             this.OrderTabs.Name = "OrderTabs";
             this.OrderTabs.SelectedIndex = 0;
             this.OrderTabs.Size = new System.Drawing.Size(361, 175);
-            this.OrderTabs.TabIndex = 4;
+            this.OrderTabs.TabIndex = 0;
+            this.OrderTabs.TabStop = false;
             this.OrderTabs.Tag = "";
             // 
             // PizzaTab
             // 
             this.PizzaTab.BackColor = System.Drawing.Color.White;
+            this.PizzaTab.Controls.Add(this.MargherittaPlus);
+            this.PizzaTab.Controls.Add(this.Margheritta);
             this.PizzaTab.Controls.Add(this.VeneciaPlus);
-            this.PizzaTab.Controls.Add(this.VeneciaCountBox);
+            this.PizzaTab.Controls.Add(this.MargherittaMinus);
+            this.PizzaTab.Controls.Add(this.Venecia);
             this.PizzaTab.Controls.Add(this.VeneciaMinus);
             this.PizzaTab.Controls.Add(this.VeneciaLabel);
             this.PizzaTab.Controls.Add(this.ToscaPlus);
-            this.PizzaTab.Controls.Add(this.ToscaCountBox);
+            this.PizzaTab.Controls.Add(this.Tosca);
             this.PizzaTab.Controls.Add(this.ToscaMinus);
             this.PizzaTab.Controls.Add(this.ToscaLabel);
             this.PizzaTab.Controls.Add(this.VegeterianaPlus);
-            this.PizzaTab.Controls.Add(this.VegeterianaCountBox);
+            this.PizzaTab.Controls.Add(this.Vegetariana);
             this.PizzaTab.Controls.Add(this.VegeterianaMinus);
             this.PizzaTab.Controls.Add(this.VegeterianaLabel);
-            this.PizzaTab.Controls.Add(this.MargherittaMinus);
             this.PizzaTab.Controls.Add(this.MargherittaLabel);
-            this.PizzaTab.Controls.Add(this.MargherittaCountBox);
-            this.PizzaTab.Controls.Add(this.MargherittaPlus);
             this.PizzaTab.Location = new System.Drawing.Point(4, 22);
             this.PizzaTab.Name = "PizzaTab";
             this.PizzaTab.Padding = new System.Windows.Forms.Padding(3);
@@ -185,28 +182,39 @@
             this.VeneciaPlus.Location = new System.Drawing.Point(307, 109);
             this.VeneciaPlus.Name = "VeneciaPlus";
             this.VeneciaPlus.Size = new System.Drawing.Size(40, 20);
-            this.VeneciaPlus.TabIndex = 16;
+            this.VeneciaPlus.TabIndex = 12;
             this.VeneciaPlus.Text = "+";
             this.VeneciaPlus.UseVisualStyleBackColor = true;
             this.VeneciaPlus.Click += new System.EventHandler(this.VeneciaPlus_Click);
             // 
-            // VeneciaCountBox
+            // MargherittaMinus
             // 
-            this.VeneciaCountBox.Location = new System.Drawing.Point(261, 109);
-            this.VeneciaCountBox.Name = "VeneciaCountBox";
-            this.VeneciaCountBox.ReadOnly = true;
-            this.VeneciaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.VeneciaCountBox.TabIndex = 15;
-            this.VeneciaCountBox.Text = "0";
-            this.VeneciaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.VeneciaCountBox.TextChanged += new System.EventHandler(this.Venecia_TextChanged);
+            this.MargherittaMinus.Location = new System.Drawing.Point(215, 19);
+            this.MargherittaMinus.Name = "MargherittaMinus";
+            this.MargherittaMinus.Size = new System.Drawing.Size(40, 20);
+            this.MargherittaMinus.TabIndex = 1;
+            this.MargherittaMinus.Text = "-";
+            this.MargherittaMinus.UseVisualStyleBackColor = true;
+            this.MargherittaMinus.Click += new System.EventHandler(this.MargherittaMinus_Click);
+            // 
+            // Venecia
+            // 
+            this.Venecia.Location = new System.Drawing.Point(261, 109);
+            this.Venecia.Name = "Venecia";
+            this.Venecia.ReadOnly = true;
+            this.Venecia.Size = new System.Drawing.Size(40, 20);
+            this.Venecia.TabIndex = 11;
+            this.Venecia.TabStop = false;
+            this.Venecia.Text = "0";
+            this.Venecia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Venecia.TextChanged += new System.EventHandler(this.Venecia_TextChanged);
             // 
             // VeneciaMinus
             // 
             this.VeneciaMinus.Location = new System.Drawing.Point(215, 109);
             this.VeneciaMinus.Name = "VeneciaMinus";
             this.VeneciaMinus.Size = new System.Drawing.Size(40, 20);
-            this.VeneciaMinus.TabIndex = 14;
+            this.VeneciaMinus.TabIndex = 10;
             this.VeneciaMinus.Text = "-";
             this.VeneciaMinus.UseVisualStyleBackColor = true;
             this.VeneciaMinus.Click += new System.EventHandler(this.VeneciaMinus_Click);
@@ -226,28 +234,29 @@
             this.ToscaPlus.Location = new System.Drawing.Point(307, 79);
             this.ToscaPlus.Name = "ToscaPlus";
             this.ToscaPlus.Size = new System.Drawing.Size(40, 20);
-            this.ToscaPlus.TabIndex = 12;
+            this.ToscaPlus.TabIndex = 9;
             this.ToscaPlus.Text = "+";
             this.ToscaPlus.UseVisualStyleBackColor = true;
             this.ToscaPlus.Click += new System.EventHandler(this.ToscaPlus_Click);
             // 
-            // ToscaCountBox
+            // Tosca
             // 
-            this.ToscaCountBox.Location = new System.Drawing.Point(261, 79);
-            this.ToscaCountBox.Name = "ToscaCountBox";
-            this.ToscaCountBox.ReadOnly = true;
-            this.ToscaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.ToscaCountBox.TabIndex = 11;
-            this.ToscaCountBox.Text = "0";
-            this.ToscaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ToscaCountBox.TextChanged += new System.EventHandler(this.Tosca_TextChanged);
+            this.Tosca.Location = new System.Drawing.Point(261, 79);
+            this.Tosca.Name = "Tosca";
+            this.Tosca.ReadOnly = true;
+            this.Tosca.Size = new System.Drawing.Size(40, 20);
+            this.Tosca.TabIndex = 8;
+            this.Tosca.TabStop = false;
+            this.Tosca.Text = "0";
+            this.Tosca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Tosca.TextChanged += new System.EventHandler(this.Tosca_TextChanged);
             // 
             // ToscaMinus
             // 
             this.ToscaMinus.Location = new System.Drawing.Point(215, 79);
             this.ToscaMinus.Name = "ToscaMinus";
             this.ToscaMinus.Size = new System.Drawing.Size(40, 20);
-            this.ToscaMinus.TabIndex = 10;
+            this.ToscaMinus.TabIndex = 7;
             this.ToscaMinus.Text = "-";
             this.ToscaMinus.UseVisualStyleBackColor = true;
             this.ToscaMinus.Click += new System.EventHandler(this.ToscaMinus_Click);
@@ -267,28 +276,29 @@
             this.VegeterianaPlus.Location = new System.Drawing.Point(307, 49);
             this.VegeterianaPlus.Name = "VegeterianaPlus";
             this.VegeterianaPlus.Size = new System.Drawing.Size(40, 20);
-            this.VegeterianaPlus.TabIndex = 8;
+            this.VegeterianaPlus.TabIndex = 6;
             this.VegeterianaPlus.Text = "+";
             this.VegeterianaPlus.UseVisualStyleBackColor = true;
             this.VegeterianaPlus.Click += new System.EventHandler(this.VegeterianaPlus_Click);
             // 
-            // VegeterianaCountBox
+            // Vegetariana
             // 
-            this.VegeterianaCountBox.Location = new System.Drawing.Point(261, 49);
-            this.VegeterianaCountBox.Name = "VegeterianaCountBox";
-            this.VegeterianaCountBox.ReadOnly = true;
-            this.VegeterianaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.VegeterianaCountBox.TabIndex = 7;
-            this.VegeterianaCountBox.Text = "0";
-            this.VegeterianaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.VegeterianaCountBox.TextChanged += new System.EventHandler(this.VegeterianaCountBox_TextChanged);
+            this.Vegetariana.Location = new System.Drawing.Point(261, 49);
+            this.Vegetariana.Name = "Vegetariana";
+            this.Vegetariana.ReadOnly = true;
+            this.Vegetariana.Size = new System.Drawing.Size(40, 20);
+            this.Vegetariana.TabIndex = 5;
+            this.Vegetariana.TabStop = false;
+            this.Vegetariana.Text = "0";
+            this.Vegetariana.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Vegetariana.TextChanged += new System.EventHandler(this.VegeterianaCountBox_TextChanged);
             // 
             // VegeterianaMinus
             // 
             this.VegeterianaMinus.Location = new System.Drawing.Point(215, 49);
             this.VegeterianaMinus.Name = "VegeterianaMinus";
             this.VegeterianaMinus.Size = new System.Drawing.Size(40, 20);
-            this.VegeterianaMinus.TabIndex = 6;
+            this.VegeterianaMinus.TabIndex = 4;
             this.VegeterianaMinus.Text = "-";
             this.VegeterianaMinus.UseVisualStyleBackColor = true;
             this.VegeterianaMinus.Click += new System.EventHandler(this.VegeterianaMinus_Click);
@@ -301,30 +311,20 @@
             this.VegeterianaLabel.Name = "VegeterianaLabel";
             this.VegeterianaLabel.Size = new System.Drawing.Size(96, 20);
             this.VegeterianaLabel.TabIndex = 5;
-            this.VegeterianaLabel.Text = "Vegeteriana";
-            // 
-            // MargherittaMinus
-            // 
-            this.MargherittaMinus.Location = new System.Drawing.Point(215, 19);
-            this.MargherittaMinus.Name = "MargherittaMinus";
-            this.MargherittaMinus.Size = new System.Drawing.Size(40, 20);
-            this.MargherittaMinus.TabIndex = 4;
-            this.MargherittaMinus.Text = "-";
-            this.MargherittaMinus.UseVisualStyleBackColor = true;
-            this.MargherittaMinus.Click += new System.EventHandler(this.MargherittaMinus_Click);
+            this.VegeterianaLabel.Text = "Vegetariana";
             // 
             // DishesTab
             // 
-            this.DishesTab.Controls.Add(this.HungarianCountBox);
+            this.DishesTab.Controls.Add(this.Hungarian);
             this.DishesTab.Controls.Add(this.HungarianCakePlus);
             this.DishesTab.Controls.Add(this.HungarianCakeMinus);
             this.DishesTab.Controls.Add(this.HungarianCakeLabel);
             this.DishesTab.Controls.Add(this.FishPlus);
-            this.DishesTab.Controls.Add(this.FishCountBox);
+            this.DishesTab.Controls.Add(this.Fish);
             this.DishesTab.Controls.Add(this.FishMinus);
             this.DishesTab.Controls.Add(this.FishFriesLabel);
             this.DishesTab.Controls.Add(this.PorkHopPlus);
-            this.DishesTab.Controls.Add(this.PorkHopCountBox);
+            this.DishesTab.Controls.Add(this.PorkHop);
             this.DishesTab.Controls.Add(this.PorkhopMinus);
             this.DishesTab.Controls.Add(this.PorkHopLabel);
             this.DishesTab.Location = new System.Drawing.Point(4, 22);
@@ -335,16 +335,17 @@
             this.DishesTab.Text = "Dishes";
             this.DishesTab.UseVisualStyleBackColor = true;
             // 
-            // HungarianCountBox
+            // Hungarian
             // 
-            this.HungarianCountBox.Location = new System.Drawing.Point(261, 79);
-            this.HungarianCountBox.Name = "HungarianCountBox";
-            this.HungarianCountBox.ReadOnly = true;
-            this.HungarianCountBox.Size = new System.Drawing.Size(40, 20);
-            this.HungarianCountBox.TabIndex = 15;
-            this.HungarianCountBox.Text = "0";
-            this.HungarianCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HungarianCountBox.TextChanged += new System.EventHandler(this.HungarianCake_TextChanged);
+            this.Hungarian.Location = new System.Drawing.Point(261, 79);
+            this.Hungarian.Name = "Hungarian";
+            this.Hungarian.ReadOnly = true;
+            this.Hungarian.Size = new System.Drawing.Size(40, 20);
+            this.Hungarian.TabIndex = 15;
+            this.Hungarian.TabStop = false;
+            this.Hungarian.Text = "0";
+            this.Hungarian.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Hungarian.TextChanged += new System.EventHandler(this.HungarianCake_TextChanged);
             // 
             // HungarianCakePlus
             // 
@@ -386,16 +387,17 @@
             this.FishPlus.UseVisualStyleBackColor = true;
             this.FishPlus.Click += new System.EventHandler(this.FishPlus_Click);
             // 
-            // FishCountBox
+            // Fish
             // 
-            this.FishCountBox.Location = new System.Drawing.Point(261, 49);
-            this.FishCountBox.Name = "FishCountBox";
-            this.FishCountBox.ReadOnly = true;
-            this.FishCountBox.Size = new System.Drawing.Size(40, 20);
-            this.FishCountBox.TabIndex = 10;
-            this.FishCountBox.Text = "0";
-            this.FishCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FishCountBox.TextChanged += new System.EventHandler(this.Fish_TextChanged);
+            this.Fish.Location = new System.Drawing.Point(261, 49);
+            this.Fish.Name = "Fish";
+            this.Fish.ReadOnly = true;
+            this.Fish.Size = new System.Drawing.Size(40, 20);
+            this.Fish.TabIndex = 10;
+            this.Fish.TabStop = false;
+            this.Fish.Text = "0";
+            this.Fish.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Fish.TextChanged += new System.EventHandler(this.Fish_TextChanged);
             // 
             // FishMinus
             // 
@@ -427,16 +429,17 @@
             this.PorkHopPlus.UseVisualStyleBackColor = true;
             this.PorkHopPlus.Click += new System.EventHandler(this.PorkHopPlus_Click);
             // 
-            // PorkHopCountBox
+            // PorkHop
             // 
-            this.PorkHopCountBox.Location = new System.Drawing.Point(261, 19);
-            this.PorkHopCountBox.Name = "PorkHopCountBox";
-            this.PorkHopCountBox.ReadOnly = true;
-            this.PorkHopCountBox.Size = new System.Drawing.Size(40, 20);
-            this.PorkHopCountBox.TabIndex = 6;
-            this.PorkHopCountBox.Text = "0";
-            this.PorkHopCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PorkHopCountBox.TextChanged += new System.EventHandler(this.Porkhop_TextChanged);
+            this.PorkHop.Location = new System.Drawing.Point(261, 19);
+            this.PorkHop.Name = "PorkHop";
+            this.PorkHop.ReadOnly = true;
+            this.PorkHop.Size = new System.Drawing.Size(40, 20);
+            this.PorkHop.TabIndex = 6;
+            this.PorkHop.TabStop = false;
+            this.PorkHop.Text = "0";
+            this.PorkHop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PorkHop.TextChanged += new System.EventHandler(this.Porkhop_TextChanged);
             // 
             // PorkhopMinus
             // 
@@ -461,11 +464,11 @@
             // SoupsTab
             // 
             this.SoupsTab.Controls.Add(this.ChickenSoupPlus);
-            this.SoupsTab.Controls.Add(this.ChickenSoupCountBox);
+            this.SoupsTab.Controls.Add(this.ChickenSoup);
             this.SoupsTab.Controls.Add(this.ChickenSoupMinus);
             this.SoupsTab.Controls.Add(this.ChickenSoulLabel);
             this.SoupsTab.Controls.Add(this.TomatoSoupPlus);
-            this.SoupsTab.Controls.Add(this.TomatoSoupCountBox);
+            this.SoupsTab.Controls.Add(this.TomatoSoup);
             this.SoupsTab.Controls.Add(this.TomatoSoupLabel);
             this.SoupsTab.Controls.Add(this.TomatoSoupMinus);
             this.SoupsTab.Location = new System.Drawing.Point(4, 22);
@@ -486,16 +489,17 @@
             this.ChickenSoupPlus.UseVisualStyleBackColor = true;
             this.ChickenSoupPlus.Click += new System.EventHandler(this.ChickenSoupPlus_Click);
             // 
-            // ChickenSoupCountBox
+            // ChickenSoup
             // 
-            this.ChickenSoupCountBox.Location = new System.Drawing.Point(261, 49);
-            this.ChickenSoupCountBox.Name = "ChickenSoupCountBox";
-            this.ChickenSoupCountBox.ReadOnly = true;
-            this.ChickenSoupCountBox.Size = new System.Drawing.Size(40, 20);
-            this.ChickenSoupCountBox.TabIndex = 11;
-            this.ChickenSoupCountBox.Text = "0";
-            this.ChickenSoupCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ChickenSoupCountBox.TextChanged += new System.EventHandler(this.ChickenSoup_TextChanged);
+            this.ChickenSoup.Location = new System.Drawing.Point(261, 49);
+            this.ChickenSoup.Name = "ChickenSoup";
+            this.ChickenSoup.ReadOnly = true;
+            this.ChickenSoup.Size = new System.Drawing.Size(40, 20);
+            this.ChickenSoup.TabIndex = 11;
+            this.ChickenSoup.TabStop = false;
+            this.ChickenSoup.Text = "0";
+            this.ChickenSoup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChickenSoup.TextChanged += new System.EventHandler(this.ChickenSoup_TextChanged);
             // 
             // ChickenSoupMinus
             // 
@@ -527,16 +531,17 @@
             this.TomatoSoupPlus.UseVisualStyleBackColor = true;
             this.TomatoSoupPlus.Click += new System.EventHandler(this.TomatoSoupPlus_Click);
             // 
-            // TomatoSoupCountBox
+            // TomatoSoup
             // 
-            this.TomatoSoupCountBox.Location = new System.Drawing.Point(261, 19);
-            this.TomatoSoupCountBox.Name = "TomatoSoupCountBox";
-            this.TomatoSoupCountBox.ReadOnly = true;
-            this.TomatoSoupCountBox.Size = new System.Drawing.Size(40, 20);
-            this.TomatoSoupCountBox.TabIndex = 7;
-            this.TomatoSoupCountBox.Text = "0";
-            this.TomatoSoupCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TomatoSoupCountBox.TextChanged += new System.EventHandler(this.TomatoSoup_TextChanged);
+            this.TomatoSoup.Location = new System.Drawing.Point(261, 19);
+            this.TomatoSoup.Name = "TomatoSoup";
+            this.TomatoSoup.ReadOnly = true;
+            this.TomatoSoup.Size = new System.Drawing.Size(40, 20);
+            this.TomatoSoup.TabIndex = 7;
+            this.TomatoSoup.TabStop = false;
+            this.TomatoSoup.Text = "0";
+            this.TomatoSoup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TomatoSoup.TextChanged += new System.EventHandler(this.TomatoSoup_TextChanged);
             // 
             // TomatoSoupLabel
             // 
@@ -561,15 +566,15 @@
             // DrinksTab
             // 
             this.DrinksTab.Controls.Add(this.ColaPlus);
-            this.DrinksTab.Controls.Add(this.ColaCountBox);
+            this.DrinksTab.Controls.Add(this.Cola);
             this.DrinksTab.Controls.Add(this.ColaMinus);
             this.DrinksTab.Controls.Add(this.ColaLabel);
             this.DrinksTab.Controls.Add(this.TeaPlus);
-            this.DrinksTab.Controls.Add(this.TeaCountBox);
+            this.DrinksTab.Controls.Add(this.Tea);
             this.DrinksTab.Controls.Add(this.TeaMinus);
             this.DrinksTab.Controls.Add(this.TeaLabel);
             this.DrinksTab.Controls.Add(this.CoffiePlus);
-            this.DrinksTab.Controls.Add(this.CoffieCountBox);
+            this.DrinksTab.Controls.Add(this.Coffie);
             this.DrinksTab.Controls.Add(this.CoffieLabel);
             this.DrinksTab.Controls.Add(this.CoffieMinus);
             this.DrinksTab.Location = new System.Drawing.Point(4, 22);
@@ -590,16 +595,17 @@
             this.ColaPlus.UseVisualStyleBackColor = true;
             this.ColaPlus.Click += new System.EventHandler(this.ColaPlus_Click);
             // 
-            // ColaCountBox
+            // Cola
             // 
-            this.ColaCountBox.Location = new System.Drawing.Point(261, 79);
-            this.ColaCountBox.Name = "ColaCountBox";
-            this.ColaCountBox.ReadOnly = true;
-            this.ColaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.ColaCountBox.TabIndex = 17;
-            this.ColaCountBox.Text = "0";
-            this.ColaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ColaCountBox.TextChanged += new System.EventHandler(this.Cola_TextChanged);
+            this.Cola.Location = new System.Drawing.Point(261, 79);
+            this.Cola.Name = "Cola";
+            this.Cola.ReadOnly = true;
+            this.Cola.Size = new System.Drawing.Size(40, 20);
+            this.Cola.TabIndex = 17;
+            this.Cola.TabStop = false;
+            this.Cola.Text = "0";
+            this.Cola.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Cola.TextChanged += new System.EventHandler(this.Cola_TextChanged);
             // 
             // ColaMinus
             // 
@@ -631,16 +637,17 @@
             this.TeaPlus.UseVisualStyleBackColor = true;
             this.TeaPlus.Click += new System.EventHandler(this.TeaPlus_Click);
             // 
-            // TeaCountBox
+            // Tea
             // 
-            this.TeaCountBox.Location = new System.Drawing.Point(261, 49);
-            this.TeaCountBox.Name = "TeaCountBox";
-            this.TeaCountBox.ReadOnly = true;
-            this.TeaCountBox.Size = new System.Drawing.Size(40, 20);
-            this.TeaCountBox.TabIndex = 13;
-            this.TeaCountBox.Text = "0";
-            this.TeaCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TeaCountBox.TextChanged += new System.EventHandler(this.Tea_TextChanged);
+            this.Tea.Location = new System.Drawing.Point(261, 49);
+            this.Tea.Name = "Tea";
+            this.Tea.ReadOnly = true;
+            this.Tea.Size = new System.Drawing.Size(40, 20);
+            this.Tea.TabIndex = 13;
+            this.Tea.TabStop = false;
+            this.Tea.Text = "0";
+            this.Tea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Tea.TextChanged += new System.EventHandler(this.Tea_TextChanged);
             // 
             // TeaMinus
             // 
@@ -672,16 +679,17 @@
             this.CoffiePlus.UseVisualStyleBackColor = true;
             this.CoffiePlus.Click += new System.EventHandler(this.CoffiePlus_Click);
             // 
-            // CoffieCountBox
+            // Coffie
             // 
-            this.CoffieCountBox.Location = new System.Drawing.Point(261, 19);
-            this.CoffieCountBox.Name = "CoffieCountBox";
-            this.CoffieCountBox.ReadOnly = true;
-            this.CoffieCountBox.Size = new System.Drawing.Size(40, 20);
-            this.CoffieCountBox.TabIndex = 9;
-            this.CoffieCountBox.Text = "0";
-            this.CoffieCountBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CoffieCountBox.TextChanged += new System.EventHandler(this.Coffie_TextChanged);
+            this.Coffie.Location = new System.Drawing.Point(261, 19);
+            this.Coffie.Name = "Coffie";
+            this.Coffie.ReadOnly = true;
+            this.Coffie.Size = new System.Drawing.Size(40, 20);
+            this.Coffie.TabIndex = 9;
+            this.Coffie.TabStop = false;
+            this.Coffie.Text = "0";
+            this.Coffie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Coffie.TextChanged += new System.EventHandler(this.Coffie_TextChanged);
             // 
             // CoffieLabel
             // 
@@ -707,18 +715,18 @@
             // 
             this.CostLabel.AutoSize = true;
             this.CostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CostLabel.Location = new System.Drawing.Point(159, 200);
+            this.CostLabel.Location = new System.Drawing.Point(379, 36);
             this.CostLabel.Name = "CostLabel";
-            this.CostLabel.Size = new System.Drawing.Size(52, 24);
+            this.CostLabel.Size = new System.Drawing.Size(47, 24);
             this.CostLabel.TabIndex = 5;
-            this.CostLabel.Text = "Cost:";
+            this.CostLabel.Text = "Cost";
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(504, 207);
+            this.ConfirmButton.Location = new System.Drawing.Point(298, 206);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
-            this.ConfirmButton.TabIndex = 6;
+            this.ConfirmButton.TabIndex = 15;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
@@ -726,99 +734,40 @@
             // ZlotyLabel
             // 
             this.ZlotyLabel.AutoSize = true;
-            this.ZlotyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ZlotyLabel.Location = new System.Drawing.Point(320, 204);
+            this.ZlotyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ZlotyLabel.Location = new System.Drawing.Point(485, 63);
             this.ZlotyLabel.Name = "ZlotyLabel";
-            this.ZlotyLabel.Size = new System.Drawing.Size(37, 18);
+            this.ZlotyLabel.Size = new System.Drawing.Size(39, 20);
             this.ZlotyLabel.TabIndex = 8;
             this.ZlotyLabel.Text = "PLN";
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(12, 207);
+            this.BackButton.Location = new System.Drawing.Point(16, 206);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
-            this.BackButton.TabIndex = 9;
+            this.BackButton.TabIndex = 13;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // ExtrasLabel
+            // ShopCartButton
             // 
-            this.ExtrasLabel.AutoSize = true;
-            this.ExtrasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ExtrasLabel.Location = new System.Drawing.Point(397, 26);
-            this.ExtrasLabel.Name = "ExtrasLabel";
-            this.ExtrasLabel.Size = new System.Drawing.Size(164, 24);
-            this.ExtrasLabel.TabIndex = 10;
-            this.ExtrasLabel.Text = "Select your extras!";
-            // 
-            // DoubleCheeseCheckbox
-            // 
-            this.DoubleCheeseCheckbox.AutoSize = true;
-            this.DoubleCheeseCheckbox.Location = new System.Drawing.Point(6, 19);
-            this.DoubleCheeseCheckbox.Name = "DoubleCheeseCheckbox";
-            this.DoubleCheeseCheckbox.Size = new System.Drawing.Size(99, 17);
-            this.DoubleCheeseCheckbox.TabIndex = 11;
-            this.DoubleCheeseCheckbox.Text = "Double Cheese";
-            this.DoubleCheeseCheckbox.UseVisualStyleBackColor = true;
-            this.DoubleCheeseCheckbox.Click += new System.EventHandler(this.DoubleCheeseCheckbox_Click);
-            // 
-            // SalamiCheckbox
-            // 
-            this.SalamiCheckbox.AutoSize = true;
-            this.SalamiCheckbox.Location = new System.Drawing.Point(113, 19);
-            this.SalamiCheckbox.Name = "SalamiCheckbox";
-            this.SalamiCheckbox.Size = new System.Drawing.Size(57, 17);
-            this.SalamiCheckbox.TabIndex = 12;
-            this.SalamiCheckbox.Text = "Salami";
-            this.SalamiCheckbox.UseVisualStyleBackColor = true;
-            this.SalamiCheckbox.Click += new System.EventHandler(this.SalamiCheckbox_Click);
-            // 
-            // HamCheckbox
-            // 
-            this.HamCheckbox.AutoSize = true;
-            this.HamCheckbox.Location = new System.Drawing.Point(6, 66);
-            this.HamCheckbox.Name = "HamCheckbox";
-            this.HamCheckbox.Size = new System.Drawing.Size(48, 17);
-            this.HamCheckbox.TabIndex = 13;
-            this.HamCheckbox.Text = "Ham";
-            this.HamCheckbox.UseVisualStyleBackColor = true;
-            this.HamCheckbox.Click += new System.EventHandler(this.HamCheckbox_Click);
-            // 
-            // MushroomsCheckbox
-            // 
-            this.MushroomsCheckbox.AutoSize = true;
-            this.MushroomsCheckbox.Location = new System.Drawing.Point(113, 66);
-            this.MushroomsCheckbox.Name = "MushroomsCheckbox";
-            this.MushroomsCheckbox.Size = new System.Drawing.Size(80, 17);
-            this.MushroomsCheckbox.TabIndex = 14;
-            this.MushroomsCheckbox.Text = "Mushrooms";
-            this.MushroomsCheckbox.UseVisualStyleBackColor = true;
-            this.MushroomsCheckbox.Click += new System.EventHandler(this.MushroomsCheckbox_Click);
-            // 
-            // extrasGroupBox
-            // 
-            this.extrasGroupBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.extrasGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.extrasGroupBox.Controls.Add(this.DoubleCheeseCheckbox);
-            this.extrasGroupBox.Controls.Add(this.MushroomsCheckbox);
-            this.extrasGroupBox.Controls.Add(this.SalamiCheckbox);
-            this.extrasGroupBox.Controls.Add(this.HamCheckbox);
-            this.extrasGroupBox.Location = new System.Drawing.Point(379, 53);
-            this.extrasGroupBox.Name = "extrasGroupBox";
-            this.extrasGroupBox.Size = new System.Drawing.Size(200, 100);
-            this.extrasGroupBox.TabIndex = 15;
-            this.extrasGroupBox.TabStop = false;
+            this.ShopCartButton.Location = new System.Drawing.Point(153, 206);
+            this.ShopCartButton.Name = "ShopCartButton";
+            this.ShopCartButton.Size = new System.Drawing.Size(91, 23);
+            this.ShopCartButton.TabIndex = 14;
+            this.ShopCartButton.Text = "Shopping Cart";
+            this.ShopCartButton.UseVisualStyleBackColor = true;
+            this.ShopCartButton.Click += new System.EventHandler(this.ShopCartButton_Click);
             // 
             // OrderWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(594, 241);
-            this.Controls.Add(this.extrasGroupBox);
-            this.Controls.Add(this.ExtrasLabel);
+            this.ClientSize = new System.Drawing.Size(526, 241);
+            this.Controls.Add(this.ShopCartButton);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ZlotyLabel);
             this.Controls.Add(this.ConfirmButton);
@@ -828,8 +777,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "OrderWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Making Order";
-            this.Load += new System.EventHandler(this.OrderWindow_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderWindow_FormClosing);
             this.OrderTabs.ResumeLayout(false);
             this.PizzaTab.ResumeLayout(false);
             this.PizzaTab.PerformLayout();
@@ -839,8 +789,6 @@
             this.SoupsTab.PerformLayout();
             this.DrinksTab.ResumeLayout(false);
             this.DrinksTab.PerformLayout();
-            this.extrasGroupBox.ResumeLayout(false);
-            this.extrasGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -849,8 +797,6 @@
         #endregion
 
         private System.Windows.Forms.Button MargherittaPlus;
-        private System.Windows.Forms.TextBox MargherittaCountBox;
-        private System.Windows.Forms.TextBox CostBox;
         private System.Windows.Forms.Label MargherittaLabel;
         private System.Windows.Forms.TabControl OrderTabs;
         private System.Windows.Forms.TabPage PizzaTab;
@@ -860,57 +806,54 @@
         private System.Windows.Forms.TabPage DrinksTab;
         private System.Windows.Forms.Button VegeterianaMinus;
         private System.Windows.Forms.Label VegeterianaLabel;
-        private System.Windows.Forms.TextBox VegeterianaCountBox;
+        private System.Windows.Forms.TextBox Vegetariana;
         private System.Windows.Forms.Button VegeterianaPlus;
         private System.Windows.Forms.Button VeneciaPlus;
-        private System.Windows.Forms.TextBox VeneciaCountBox;
+        private System.Windows.Forms.TextBox Venecia;
         private System.Windows.Forms.Button VeneciaMinus;
         private System.Windows.Forms.Label VeneciaLabel;
         private System.Windows.Forms.Button ToscaPlus;
-        private System.Windows.Forms.TextBox ToscaCountBox;
+        private System.Windows.Forms.TextBox Tosca;
         private System.Windows.Forms.Button ToscaMinus;
         private System.Windows.Forms.Label ToscaLabel;
-        private System.Windows.Forms.TextBox HungarianCountBox;
+        private System.Windows.Forms.TextBox Hungarian;
         private System.Windows.Forms.Button HungarianCakePlus;
         private System.Windows.Forms.Button HungarianCakeMinus;
         private System.Windows.Forms.Label HungarianCakeLabel;
         private System.Windows.Forms.Button FishPlus;
-        private System.Windows.Forms.TextBox FishCountBox;
+        private System.Windows.Forms.TextBox Fish;
         private System.Windows.Forms.Button FishMinus;
         private System.Windows.Forms.Label FishFriesLabel;
         private System.Windows.Forms.Button PorkHopPlus;
-        private System.Windows.Forms.TextBox PorkHopCountBox;
+        private System.Windows.Forms.TextBox PorkHop;
         private System.Windows.Forms.Button PorkhopMinus;
         private System.Windows.Forms.Label PorkHopLabel;
         private System.Windows.Forms.Label TomatoSoupLabel;
         private System.Windows.Forms.Button TomatoSoupMinus;
         private System.Windows.Forms.Button ChickenSoupPlus;
-        private System.Windows.Forms.TextBox ChickenSoupCountBox;
+        private System.Windows.Forms.TextBox ChickenSoup;
         private System.Windows.Forms.Button ChickenSoupMinus;
         private System.Windows.Forms.Label ChickenSoulLabel;
         private System.Windows.Forms.Button TomatoSoupPlus;
-        private System.Windows.Forms.TextBox TomatoSoupCountBox;
+        private System.Windows.Forms.TextBox TomatoSoup;
         private System.Windows.Forms.Button ColaPlus;
-        private System.Windows.Forms.TextBox ColaCountBox;
+        private System.Windows.Forms.TextBox Cola;
         private System.Windows.Forms.Button ColaMinus;
         private System.Windows.Forms.Label ColaLabel;
         private System.Windows.Forms.Button TeaPlus;
-        private System.Windows.Forms.TextBox TeaCountBox;
+        private System.Windows.Forms.TextBox Tea;
         private System.Windows.Forms.Button TeaMinus;
         private System.Windows.Forms.Label TeaLabel;
         private System.Windows.Forms.Button CoffiePlus;
-        private System.Windows.Forms.TextBox CoffieCountBox;
+        private System.Windows.Forms.TextBox Coffie;
         private System.Windows.Forms.Label CoffieLabel;
         private System.Windows.Forms.Button CoffieMinus;
         private System.Windows.Forms.Label CostLabel;
         private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.Label ZlotyLabel;
         private System.Windows.Forms.Button BackButton;
-        private System.Windows.Forms.Label ExtrasLabel;
-        private System.Windows.Forms.CheckBox DoubleCheeseCheckbox;
-        private System.Windows.Forms.CheckBox SalamiCheckbox;
-        private System.Windows.Forms.CheckBox HamCheckbox;
-        private System.Windows.Forms.CheckBox MushroomsCheckbox;
-        private System.Windows.Forms.GroupBox extrasGroupBox;
+        internal System.Windows.Forms.TextBox CostBox;
+        private System.Windows.Forms.TextBox Margheritta;
+        private System.Windows.Forms.Button ShopCartButton;
     }
 }

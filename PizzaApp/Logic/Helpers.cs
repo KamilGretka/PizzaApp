@@ -1,19 +1,14 @@
-﻿using System;
+﻿using PizzaApp.Models;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PizzaApp
 {
     internal static class Helpers
     {
-        internal static void OpenNewWindow<T>() where T : Form
-        {
-            Application.Run(Activator.CreateInstance<T>());
-        }
-
         internal static void AddValueToCountBox(TextBox countTextBox)
         {
             int value = int.Parse(countTextBox.Text);
-            if (value < 10)
                 countTextBox.Text = (value + 1).ToString();
         }
 
@@ -24,10 +19,18 @@ namespace PizzaApp
                 countTextBox.Text = (value - 1).ToString();
         }
 
-        internal static string GetContentFromObject(object obj, string prop)
+        internal static void RemoveLastItemFromOrderListByName(string itemName)
         {
-            var text = obj.GetType().GetProperty(prop);
-            return (string)text.GetValue(obj, null);
+            var orderWindow = WindowsManagement.GetOrderWindowInstance();
+            Order item = orderWindow.orderList.Where(x => x.Name.Equals(itemName)).ToList().LastOrDefault();
+            orderWindow.orderList.Remove(item);
+        }
+
+        internal static void ClearAllTextBoxData()
+        {
+            WindowsManagement.GetOrderConfirmInstance().Dispose();
+            WindowsManagement.GetOrderWindowInstance().Dispose();
+            WindowsManagement.GetOrderWindowInstance().orderList.Clear();
         }
     }
 }

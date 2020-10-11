@@ -80,7 +80,7 @@
             this.OrderButton.Location = new System.Drawing.Point(154, 90);
             this.OrderButton.Name = "OrderButton";
             this.OrderButton.Size = new System.Drawing.Size(117, 23);
-            this.OrderButton.TabIndex = 4;
+            this.OrderButton.TabIndex = 1;
             this.OrderButton.Text = "Make a order";
             this.OrderButton.UseVisualStyleBackColor = true;
             this.OrderButton.Click += new System.EventHandler(this.OrderButton_Click);
@@ -100,7 +100,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome!";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

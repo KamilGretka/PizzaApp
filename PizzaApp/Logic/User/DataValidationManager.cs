@@ -3,7 +3,6 @@ using PizzaApp.OutputMessages;
 using System;
 using System.Linq;
 using System.Net.Mail;
-using System.Text.RegularExpressions;
 
 namespace PizzaApp.Logic.User
 {
@@ -22,20 +21,29 @@ namespace PizzaApp.Logic.User
             }
         }
 
-        public (bool, string) CheckString(string sentence)
+        public (bool, string) CheckFirstName(string firstName)
         {
-            if (!float.TryParse(sentence, out float _) && Regex.IsMatch(sentence, @"^[a-zA-Z]+$")) 
-                return (true, string.Empty);
-            else
-                return (false, UserMessages.InvalidUserDataFormatInput);
+            var result = CheckString(firstName);
+            return result == true ? (result, string.Empty) : (false, UserMessages.InvalidFirstName);
         }
 
-        public (bool, string) CheckAdress(string adress)
+        public (bool, string) CheckLastName(string lastName)
         {
-            if (adress.Any(char.IsDigit) && adress.Any(char.IsLetter))
+            var result = CheckString(lastName);
+            return CheckString(lastName) == true ? (result, string.Empty) : (false, UserMessages.InvalidLastName);
+        }
+
+        public bool CheckString(string sentence)
+        {
+             return sentence.All(char.IsLetter) && sentence != string.Empty;
+        }
+
+        public (bool, string) CheckAddress(string address)
+        {
+            if (address.Any(char.IsDigit) && address.Any(char.IsLetter))
                 return (true, string.Empty);
             else
-                return (false, UserMessages.InvalidUserDataFormatInput);
+                return (false, UserMessages.InvalidAddressFormat);
         }
     }
 }

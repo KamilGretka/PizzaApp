@@ -6,7 +6,6 @@ namespace PizzaApp.Cryptography
 {
     internal class Crypto
     {
-
         internal string DecryptSentence(string sentence)
         {
             byte[] data = Convert.FromBase64String(sentence);

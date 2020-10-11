@@ -1,35 +1,28 @@
-﻿using PizzaApp.Cryptography;
+﻿using PizzaApp.Models;
 using PizzaApp.OutputMessages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PizzaApp
 {
     public partial class OrderWindow : Form
     {
-        Thread orderConfirm, mainWindow;
-        private static decimal extrasPrice;
+        internal List<Order> orderList = new List<Order>();
+
+        internal TextBox choosedTextBox;
         public OrderWindow()
         {
             InitializeComponent();
-        }
-        private void OrderWindow_Load(object sender, EventArgs e)
-        {
-            DoubleCheeseCheckbox.Hide();
-            SalamiCheckbox.Hide();
-            HamCheckbox.Hide();
-            MushroomsCheckbox.Hide();
         }
 
         internal void ChangeCurrentPriceValue()
         {
             try
             {
-                CostBox.Text = (GenerateOrderList().Sum(x => x) + extrasPrice).ToString();
+                CostBox.Text = (orderList.Sum(x => x.Price)).ToString();
 
             }
             catch (Exception)
@@ -37,110 +30,38 @@ namespace PizzaApp
                 MessageBox.Show("Invalid parameter.", WindowsTypes.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private List<decimal> GenerateOrderList()
-        {
-            List<KeyValuePair<int, decimal>> orderList = new List<KeyValuePair<int, decimal>>()
-            {
-                new KeyValuePair<int, decimal>(int.Parse(MargherittaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Margheritta"])),
-                new KeyValuePair<int, decimal>(int.Parse(VegeterianaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Vegetariana"])),
-                new KeyValuePair<int, decimal>(int.Parse(ToscaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tosca"])),
-                new KeyValuePair<int, decimal>(int.Parse(VeneciaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Venecia"])),
-                new KeyValuePair<int, decimal>(int.Parse(PorkHopCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Porkhop"])),
-                new KeyValuePair<int, decimal>(int.Parse(FishCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Fish"])),
-                new KeyValuePair<int, decimal>(int.Parse(HungarianCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Hungarian Cake"])),
-                new KeyValuePair<int, decimal>(int.Parse(TomatoSoupCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tomato Soup"])),
-                new KeyValuePair<int, decimal>(int.Parse(ChickenSoupCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Chicken Soup"])),
-                new KeyValuePair<int, decimal>(int.Parse(CoffieCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Coffie"])),
-                new KeyValuePair<int, decimal>(int.Parse(TeaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Tea"])),
-                new KeyValuePair<int, decimal>(int.Parse(ColaCountBox.Text), decimal.Parse(ConfigurationManager.AppSettings["Cola"])),
-            };
-
-            List<decimal> countedOrderList = new List<decimal>();
-
-            foreach (var order in orderList)
-            {
-                countedOrderList.Add(order.Key * order.Value);
-            }
-
-            if (countedOrderList.All(x => x.Equals(0)))
-                extrasPrice = 0;
-            return countedOrderList;
-        }
-
-        public static Form IsFormAlreadyOpen(Type formType)
-        {
-            return Application.OpenForms.Cast<Form>().FirstOrDefault(openForm => openForm.GetType() == formType);
-        }
-
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            Crypto crypto = new Crypto();
             decimal currentPrice = decimal.Parse(CostBox.Text);
             if (currentPrice.Equals(0))
                 MessageBox.Show(UserMessages.NoOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
             else if (decimal.Parse(CostBox.Text) <= 150)
             {
-                orderConfirm = new Thread(Helpers.OpenNewWindow<OrderConfirm>);
-                orderConfirm.SetApartmentState(ApartmentState.STA);
-                orderConfirm.Start();
+                Hide();
+                WindowsManagement.GetOrderConfirmInstance().Show();
             }
             else
                 MessageBox.Show(UserMessages.HugeOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            Close();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            extrasPrice = 0;
-            mainWindow = new Thread(Helpers.OpenNewWindow<MainWindow>);
-            mainWindow.SetApartmentState(ApartmentState.STA);
-            mainWindow.Start();
-            Close();
-        }
-
-        private void ShowExtrasPanel(object sender)
-        {
-            ExtrasLabel.Show();
-            List<CheckBox> checkBoxes = new List<CheckBox>()
-            {
-                DoubleCheeseCheckbox,
-                HamCheckbox,
-                MushroomsCheckbox,
-                SalamiCheckbox
-            };
-
-            foreach (CheckBox checkBox in checkBoxes)
-            {
-                if (Helpers.GetContentFromObject(sender, "Text").Equals("+"))
-                    checkBox.Show();
-                else
-                    checkBox.Hide();
-
-                checkBox.Checked = false;
-                extrasGroupBox.Show();
-            }
-        }
-
-        private void ChangeExtrasPrice(CheckBox checkbox)
-        {
-            if (checkbox.Checked)
-                extrasPrice += 2;
-            else
-                extrasPrice -= 2;
+            Hide();
+            WindowsManagement.GetMainWindowInstance().Show();
         }
 
         private void MargherittaPlus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.AddValueToCountBox(MargherittaCountBox);
+            choosedTextBox = Margheritta;
+            Hide();
+            WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void MargherittaMinus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.SubstractValuInCountBox(MargherittaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Margheritta");
+            Helpers.SubstractValuInCountBox(Margheritta);
         }
 
         private void MargherittaCountBox_TextChanged(object sender, EventArgs e)
@@ -150,14 +71,15 @@ namespace PizzaApp
 
         private void VegeterianaPlus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.AddValueToCountBox(VegeterianaCountBox);
+            choosedTextBox = Vegetariana;
+            Hide();
+            WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void VegeterianaMinus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.SubstractValuInCountBox(VegeterianaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Vegetariana");
+            Helpers.SubstractValuInCountBox(Vegetariana);
         }
 
         private void VegeterianaCountBox_TextChanged(object sender, EventArgs e)
@@ -167,14 +89,15 @@ namespace PizzaApp
 
         private void ToscaPlus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.AddValueToCountBox(ToscaCountBox);
+            choosedTextBox = Tosca;
+            Hide();
+            WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void ToscaMinus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.SubstractValuInCountBox(ToscaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Tosca");
+            Helpers.SubstractValuInCountBox(Tosca);
         }
 
         private void Tosca_TextChanged(object sender, EventArgs e)
@@ -184,14 +107,15 @@ namespace PizzaApp
 
         private void VeneciaPlus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.AddValueToCountBox(VeneciaCountBox);
+            choosedTextBox = Venecia;
+            Hide();
+            WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void VeneciaMinus_Click(object sender, EventArgs e)
         {
-            ShowExtrasPanel(sender);
-            Helpers.SubstractValuInCountBox(VeneciaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Venecia");
+            Helpers.SubstractValuInCountBox(Venecia);
         }
 
         private void Venecia_TextChanged(object sender, EventArgs e)
@@ -201,12 +125,14 @@ namespace PizzaApp
 
         private void PorkHopPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(PorkHopCountBox);
+            orderList.Add(new Order(PorkHop.Name, decimal.Parse(ConfigurationManager.AppSettings[PorkHop.Name]), string.Empty));
+            Helpers.AddValueToCountBox(PorkHop);
         }
 
         private void PorkhopMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(PorkHopCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("PorkHop");
+            Helpers.SubstractValuInCountBox(PorkHop);
         }
 
         private void Porkhop_TextChanged(object sender, EventArgs e)
@@ -216,13 +142,16 @@ namespace PizzaApp
 
         private void FishPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(FishCountBox);
+            orderList.Add(new Order(Fish.Name, decimal.Parse(ConfigurationManager.AppSettings[Fish.Name]), string.Empty));
+            Helpers.AddValueToCountBox(Fish);
         }
 
         private void FishMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(FishCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Fish");
+            Helpers.SubstractValuInCountBox(Fish);
         }
+
         private void Fish_TextChanged(object sender, EventArgs e)
         {
             ChangeCurrentPriceValue();
@@ -230,12 +159,14 @@ namespace PizzaApp
 
         private void HungarianCakePlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(HungarianCountBox);
+            orderList.Add(new Order(Hungarian.Name, decimal.Parse(ConfigurationManager.AppSettings[Hungarian.Name]), string.Empty));
+            Helpers.AddValueToCountBox(Hungarian);
         }
 
         private void HungarianCakeMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(HungarianCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Hungarian");
+            Helpers.SubstractValuInCountBox(Hungarian);
         }
 
         private void HungarianCake_TextChanged(object sender, EventArgs e)
@@ -245,12 +176,14 @@ namespace PizzaApp
 
         private void TomatoSoupPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(TomatoSoupCountBox);
+            orderList.Add(new Order(TomatoSoup.Name, decimal.Parse(ConfigurationManager.AppSettings[TomatoSoup.Name]), string.Empty));
+            Helpers.AddValueToCountBox(TomatoSoup);
         }
 
         private void TomatoSoupMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(TomatoSoupCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("TomatoSoup");
+            Helpers.SubstractValuInCountBox(TomatoSoup);
         }
 
         private void TomatoSoup_TextChanged(object sender, EventArgs e)
@@ -260,12 +193,14 @@ namespace PizzaApp
 
         private void ChickenSoupPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(ChickenSoupCountBox);
+            orderList.Add(new Order(ChickenSoup.Name, decimal.Parse(ConfigurationManager.AppSettings[ChickenSoup.Name]), string.Empty));
+            Helpers.AddValueToCountBox(ChickenSoup);
         }
 
         private void ChickenSoupMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(ChickenSoupCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("TomatoSoup");
+            Helpers.SubstractValuInCountBox(ChickenSoup);
         }
 
         private void ChickenSoup_TextChanged(object sender, EventArgs e)
@@ -275,12 +210,14 @@ namespace PizzaApp
 
         private void CoffiePlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(CoffieCountBox);
+            orderList.Add(new Order(Coffie.Name, decimal.Parse(ConfigurationManager.AppSettings[Coffie.Name]), string.Empty));
+            Helpers.AddValueToCountBox(Coffie);
         }
 
         private void CoffieMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(CoffieCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Coffie");
+            Helpers.SubstractValuInCountBox(Coffie);
         }
 
         private void Coffie_TextChanged(object sender, EventArgs e)
@@ -290,12 +227,14 @@ namespace PizzaApp
 
         private void TeaPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(TeaCountBox);
+            orderList.Add(new Order(Tea.Name, decimal.Parse(ConfigurationManager.AppSettings[Tea.Name]), string.Empty));
+            Helpers.AddValueToCountBox(Tea);
         }
 
         private void TeaMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(TeaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Tea");
+            Helpers.SubstractValuInCountBox(Tea);
         }
 
         private void Tea_TextChanged(object sender, EventArgs e)
@@ -305,12 +244,14 @@ namespace PizzaApp
 
         private void ColaPlus_Click(object sender, EventArgs e)
         {
-            Helpers.AddValueToCountBox(ColaCountBox);
+            orderList.Add(new Order(Cola.Name, decimal.Parse(ConfigurationManager.AppSettings[Cola.Name]), string.Empty));
+            Helpers.AddValueToCountBox(Cola);
         }
 
         private void ColaMinus_Click(object sender, EventArgs e)
         {
-            Helpers.SubstractValuInCountBox(ColaCountBox);
+            Helpers.RemoveLastItemFromOrderListByName("Cola");
+            Helpers.SubstractValuInCountBox(Cola);
         }
 
         private void Cola_TextChanged(object sender, EventArgs e)
@@ -318,28 +259,15 @@ namespace PizzaApp
             ChangeCurrentPriceValue();
         }
 
-        private void SalamiCheckbox_Click(object sender, EventArgs e)
+        private void OrderWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ChangeExtrasPrice(SalamiCheckbox);
-            ChangeCurrentPriceValue();
+            Application.Exit();
         }
 
-        private void HamCheckbox_Click(object sender, EventArgs e)
+        private void ShopCartButton_Click(object sender, EventArgs e)
         {
-            ChangeExtrasPrice(HamCheckbox);
-            ChangeCurrentPriceValue();
-        }
-
-        private void MushroomsCheckbox_Click(object sender, EventArgs e)
-        {
-            ChangeExtrasPrice(MushroomsCheckbox);
-            ChangeCurrentPriceValue();
-        }
-
-        private void DoubleCheeseCheckbox_Click(object sender, EventArgs e)
-        {
-            ChangeExtrasPrice(DoubleCheeseCheckbox);
-            ChangeCurrentPriceValue();
+            Hide();
+            WindowsManagement.GetShopCartInstance().Show();
         }
     }
 }

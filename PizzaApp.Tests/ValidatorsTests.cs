@@ -11,7 +11,7 @@ namespace PizzaApp.Tests
         {
             //Arrange
             (bool, string) expected = (false, UserMessages.InvalidEmailFormat);
-            string email = "Infermus123%vp.pl";
+            string email = "test%test.com";
 
             //Act
             var result = new DataValidationManager().CheckEmail(email);
@@ -25,7 +25,7 @@ namespace PizzaApp.Tests
         {
             //Arrange
             (bool, string) expected = (true, string.Empty);
-            string email = "Infermus123@vp.pl";
+            string email = "test@test.com";
 
             //Act
             var result = new DataValidationManager().CheckEmail(email);
@@ -39,27 +39,27 @@ namespace PizzaApp.Tests
         [InlineData("123")]
         [InlineData("Example123")]
         [InlineData("Example example")]
-        public void CheckString_WhenUserDataIsInvalid_ShouldReturnErrorWithMessage(string sentence)
+        public void CheckUserName_WhenUserDataIsInvalid_ShouldReturnErrorWithMessage(string sentence)
         {
             //Arrange
-            (bool, string) expected = (false, UserMessages.InvalidUserDataFormatInput);
+            (bool, string) expected = (false, UserMessages.InvalidFirstName);
 
             //Act
-            var result = new DataValidationManager().CheckString(sentence);
+            var result = new DataValidationManager().CheckFirstName(sentence);
 
             //Assert
             Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void CheckString_WhenUserDataCorrect_ShouldReturnCorrectResult()
+        public void CheckUserName_WhenUserDataCorrect_ShouldReturnCorrectResult()
         {
             //Arrange
             (bool, string) expected = (true, string.Empty);
             string userName = "Kamil";
 
             //Act
-            var result = new DataValidationManager().CheckString(userName);
+            var result = new DataValidationManager().CheckFirstName(userName);
 
             //Assert
             Assert.Equal(expected, result);
@@ -71,10 +71,10 @@ namespace PizzaApp.Tests
         public void CheckAdress_WhenUserDataIsInvalid_ShouldReturnErrorWithMessage(string adress)
         {
             //Arrange
-            (bool, string) expected = (false, UserMessages.InvalidUserDataFormatInput);
+            (bool, string) expected = (false, UserMessages.InvalidAddressFormat);
 
             //Act
-            var result = new DataValidationManager().CheckAdress(adress);
+            var result = new DataValidationManager().CheckAddress(adress);
 
             //Assert
             Assert.Equal(expected, result);
@@ -88,7 +88,7 @@ namespace PizzaApp.Tests
             string adress = "Koktajlowo 16";
 
             //Act
-            var result = new DataValidationManager().CheckAdress(adress);
+            var result = new DataValidationManager().CheckAddress(adress);
 
             //Assert
             Assert.Equal(expected, result);

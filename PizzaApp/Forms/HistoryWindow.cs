@@ -2,20 +2,29 @@
 using PizzaApp.OutputMessages;
 using System;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PizzaApp
 {
     public partial class HistoryWindow : Form
     {
-        Thread mainWindow;
         public HistoryWindow()
         {
             InitializeComponent();
         }
 
-        private void HistoryWindow_Load(object sender, EventArgs e)
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            WindowsManagement.GetMainWindowInstance().Show();
+        }
+
+        private void HistoryWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void HistoryWindow_VisibleChanged(object sender, EventArgs e)
         {
             try
             {
@@ -29,14 +38,6 @@ namespace PizzaApp
                 MessageBox.Show(UserMessages.DatabaseConnectionProblem, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            Close();
-            mainWindow = new Thread(Helpers.OpenNewWindow<MainWindow>);
-            mainWindow.SetApartmentState(ApartmentState.STA);
-            mainWindow.Start();
         }
     }
 }

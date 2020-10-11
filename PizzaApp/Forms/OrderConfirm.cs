@@ -23,9 +23,9 @@ namespace PizzaApp
             List<(bool, string)> validators = new List<(bool, string)>()
             {
                 validation.CheckEmail(EmailTextBox.Text),
-                validation.CheckString(FirstNameTextBox.Text),
-                validation.CheckString(LastNameTextBox.Text),
-                validation.CheckAdress(AdressTextBox.Text),
+                validation.CheckFirstName(FirstNameTextBox.Text),
+                validation.CheckLastName(LastNameTextBox.Text),
+                validation.CheckAddress(AddressTextBox.Text),
             };
 
             foreach (var validator in validators.Select(x => x).ToList())
@@ -39,7 +39,7 @@ namespace PizzaApp
 
             if (validators.All(x => x.Item1 == true))
             {
-                var emailBody = string.Format(emailBodyFormat, AdressTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, NotesTextBox.Text);
+                var emailBody = string.Format(emailBodyFormat, AddressTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, NotesTextBox.Text);
 
                 EmailSendStatus emailSendStatus = new EmailManager().SendEmail(EmailTextBox.Text, "Pizza Application Order", emailBody);
 
@@ -47,11 +47,12 @@ namespace PizzaApp
                 {
                     MessageBox.Show(UserMessages.EmailSended, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AddHistoryRecordToDatabase();
+                    Helpers.ClearAllTextBoxData();
+                    Hide();
+                    WindowsManagement.GetMainWindowInstance().Show();
                 }
                 else
                     MessageBox.Show(UserMessages.EmailFailedToSend, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Close();
             }
         }
 
@@ -61,7 +62,7 @@ namespace PizzaApp
             {
                 Id = Guid.NewGuid(),
                 OrderTime = DateTime.Now,
-                Adress = AdressTextBox.Text,
+                Adress = AddressTextBox.Text,
                 OrderMessage = NotesTextBox.Text,
                 CustomerName = $"{FirstNameTextBox.Text} {LastNameTextBox.Text}"
             };
@@ -77,6 +78,17 @@ namespace PizzaApp
             { 
                 //Information from this exception should go to logs (connection with database failed, record not added)
             }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            WindowsManagement.GetOrderWindowInstance().Show();
+        }
+
+        private void OrderConfirm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
