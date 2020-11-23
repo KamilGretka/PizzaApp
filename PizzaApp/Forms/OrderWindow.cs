@@ -1,10 +1,11 @@
-﻿using PizzaApp.Logic;
+﻿using PizzaApp.Config;
+using PizzaApp.Logic;
 using PizzaApp.Logic.User;
 using PizzaApp.Models;
+using PizzaApp.Models.Products.Abstract;
 using PizzaApp.OutputMessages;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace PizzaApp.Forms
     {
         internal List<Order> orderList = new List<Order>();
 
-        internal TextBox choosedTextBox;
+        internal TextBox choosedCountBox;
         public OrderWindow()
         {
             InitializeComponent();
@@ -24,8 +25,7 @@ namespace PizzaApp.Forms
         {
             try
             {
-                CostBox.Text = (orderList.Sum(x => x.Price)).ToString();
-
+                CostBox.Text = orderList.Sum(x => x.Product.Price).ToString();
             }
             catch (Exception)
             {
@@ -37,14 +37,18 @@ namespace PizzaApp.Forms
         {
             decimal currentPrice = decimal.Parse(CostBox.Text);
             if (currentPrice.Equals(0))
+            {
                 MessageBox.Show(UserMessages.NoOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else if (decimal.Parse(CostBox.Text) <= 150m)
             {
                 Hide();
                 WindowsManagement.GetOrderConfirmInstance().Show();
             }
             else
+            {
                 MessageBox.Show(UserMessages.HugeOrder, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -56,15 +60,15 @@ namespace PizzaApp.Forms
 
         private void MargherittaPlus_Click(object sender, EventArgs e)
         {
-            choosedTextBox = Margheritta;
+            choosedCountBox = MargherittaCountBox;
             Hide();
             WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void MargherittaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Margheritta");
-            UserActionHelpers.SubstractValuInCountBox(Margheritta);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Margheritta);
+            UserActionHelpers.SubstractValuInCountBox(MargherittaCountBox);
         }
 
         private void MargherittaCountBox_TextChanged(object sender, EventArgs e)
@@ -74,15 +78,15 @@ namespace PizzaApp.Forms
 
         private void VegeterianaPlus_Click(object sender, EventArgs e)
         {
-            choosedTextBox = Vegetariana;
+            choosedCountBox = VegetarianaCountBox;
             Hide();
             WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void VegeterianaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Vegetariana");
-            UserActionHelpers.SubstractValuInCountBox(Vegetariana);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Vegetariana);
+            UserActionHelpers.SubstractValuInCountBox(VegetarianaCountBox);
         }
 
         private void VegeterianaCountBox_TextChanged(object sender, EventArgs e)
@@ -92,15 +96,15 @@ namespace PizzaApp.Forms
 
         private void ToscaPlus_Click(object sender, EventArgs e)
         {
-            choosedTextBox = Tosca;
+            choosedCountBox = ToscaCountBox;
             Hide();
             WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void ToscaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Tosca");
-            UserActionHelpers.SubstractValuInCountBox(Tosca);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Tosca);
+            UserActionHelpers.SubstractValuInCountBox(ToscaCountBox);
         }
 
         private void Tosca_TextChanged(object sender, EventArgs e)
@@ -110,15 +114,15 @@ namespace PizzaApp.Forms
 
         private void VeneciaPlus_Click(object sender, EventArgs e)
         {
-            choosedTextBox = Venecia;
+            choosedCountBox = VeneciaCountBox;
             Hide();
             WindowsManagement.GetExtrasPanelInstance().Show();
         }
 
         private void VeneciaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Venecia");
-            UserActionHelpers.SubstractValuInCountBox(Venecia);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Venecia);
+            UserActionHelpers.SubstractValuInCountBox(VeneciaCountBox);
         }
 
         private void Venecia_TextChanged(object sender, EventArgs e)
@@ -128,14 +132,14 @@ namespace PizzaApp.Forms
 
         private void PorkHopPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(PorkHop.Name, decimal.Parse(ConfigurationManager.AppSettings[PorkHop.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(PorkHop);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.PorkHop, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(PorkHopCountBox);
         }
 
         private void PorkhopMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("PorkHop");
-            UserActionHelpers.SubstractValuInCountBox(PorkHop);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.PorkHop);
+            UserActionHelpers.SubstractValuInCountBox(PorkHopCountBox);
         }
 
         private void Porkhop_TextChanged(object sender, EventArgs e)
@@ -145,14 +149,14 @@ namespace PizzaApp.Forms
 
         private void FishPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(Fish.Name, decimal.Parse(ConfigurationManager.AppSettings[Fish.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(Fish);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.FishFries, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(FishCountBox);
         }
 
         private void FishMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Fish");
-            UserActionHelpers.SubstractValuInCountBox(Fish);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.FishFries);
+            UserActionHelpers.SubstractValuInCountBox(FishCountBox);
         }
 
         private void Fish_TextChanged(object sender, EventArgs e)
@@ -162,14 +166,14 @@ namespace PizzaApp.Forms
 
         private void HungarianCakePlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(Hungarian.Name, decimal.Parse(ConfigurationManager.AppSettings[Hungarian.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(Hungarian);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.HungarianCake, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(HungarianCountBox);
         }
 
         private void HungarianCakeMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Hungarian");
-            UserActionHelpers.SubstractValuInCountBox(Hungarian);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.HungarianCake);
+            UserActionHelpers.SubstractValuInCountBox(HungarianCountBox);
         }
 
         private void HungarianCake_TextChanged(object sender, EventArgs e)
@@ -179,14 +183,14 @@ namespace PizzaApp.Forms
 
         private void TomatoSoupPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(TomatoSoup.Name, decimal.Parse(ConfigurationManager.AppSettings[TomatoSoup.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(TomatoSoup);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.TomatoSoup, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(TomatoSoupCountBox);
         }
 
         private void TomatoSoupMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("TomatoSoup");
-            UserActionHelpers.SubstractValuInCountBox(TomatoSoup);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.TomatoSoup);
+            UserActionHelpers.SubstractValuInCountBox(TomatoSoupCountBox);
         }
 
         private void TomatoSoup_TextChanged(object sender, EventArgs e)
@@ -196,14 +200,14 @@ namespace PizzaApp.Forms
 
         private void ChickenSoupPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(ChickenSoup.Name, decimal.Parse(ConfigurationManager.AppSettings[ChickenSoup.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(ChickenSoup);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.ChickenSoup, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(ChickenSoupCountBox);
         }
 
         private void ChickenSoupMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("ChickenSoup");
-            UserActionHelpers.SubstractValuInCountBox(ChickenSoup);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.ChickenSoup);
+            UserActionHelpers.SubstractValuInCountBox(ChickenSoupCountBox);
         }
 
         private void ChickenSoup_TextChanged(object sender, EventArgs e)
@@ -213,14 +217,14 @@ namespace PizzaApp.Forms
 
         private void CoffiePlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(Coffie.Name, decimal.Parse(ConfigurationManager.AppSettings[Coffie.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(Coffie);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.Cola, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(CoffieCountBox);
         }
 
         private void CoffieMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Coffie");
-            UserActionHelpers.SubstractValuInCountBox(Coffie);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Cola);
+            UserActionHelpers.SubstractValuInCountBox(CoffieCountBox);
         }
 
         private void Coffie_TextChanged(object sender, EventArgs e)
@@ -230,14 +234,14 @@ namespace PizzaApp.Forms
 
         private void TeaPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(Tea.Name, decimal.Parse(ConfigurationManager.AppSettings[Tea.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(Tea);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.Tea, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(TeaCountBox);
         }
 
         private void TeaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Tea");
-            UserActionHelpers.SubstractValuInCountBox(Tea);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Tea);
+            UserActionHelpers.SubstractValuInCountBox(TeaCountBox);
         }
 
         private void Tea_TextChanged(object sender, EventArgs e)
@@ -247,14 +251,14 @@ namespace PizzaApp.Forms
 
         private void ColaPlus_Click(object sender, EventArgs e)
         {
-            orderList.Add(new Order(Cola.Name, decimal.Parse(ConfigurationManager.AppSettings[Cola.Name]), string.Empty));
-            UserActionHelpers.AddValueToCountBox(Cola);
+            orderList.Add(new Order(new Product(ProductsConfiguration.Product.TryGetValue(ProductsNames.Cola, out Product product) ? product.Name : string.Empty, product.Price)));
+            UserActionHelpers.AddValueToCountBox(ColaCountBox);
         }
 
         private void ColaMinus_Click(object sender, EventArgs e)
         {
-            UserActionHelpers.RemoveLastItemFromOrderListByName("Cola");
-            UserActionHelpers.SubstractValuInCountBox(Cola);
+            UserActionHelpers.RemoveLastItemFromOrderListByName(ProductsNames.Cola);
+            UserActionHelpers.SubstractValuInCountBox(ColaCountBox);
         }
 
         private void Cola_TextChanged(object sender, EventArgs e)

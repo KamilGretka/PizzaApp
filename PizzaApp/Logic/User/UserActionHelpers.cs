@@ -16,13 +16,15 @@ namespace PizzaApp.Logic.User
         {
             int value = int.Parse(countTextBox.Text);
             if (value > 0)
+            {
                 countTextBox.Text = (value - 1).ToString();
+            }
         }
 
         internal static void RemoveLastItemFromOrderListByName(string itemName)
         {
             var orderWindow = WindowsManagement.GetOrderWindowInstance();
-            Order item = orderWindow.orderList.Where(x => x.Name.Equals(itemName)).ToList().LastOrDefault();
+            Order item = orderWindow.orderList.Where(x => x.Product.Name.Equals(itemName)).ToList().LastOrDefault();
             orderWindow.orderList.Remove(item);
         }
 

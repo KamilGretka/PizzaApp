@@ -11,7 +11,7 @@ namespace PizzaApp.Forms
 {
     public partial class OrderConfirm : Form
     {
-        private const string emailBodyFormat = "<p>Your order has been procedeed and will be sended to adress: <b> {0} </b></p> <p> Personal details: {1}, {2} </p> <p> Additional note: {3} </p>";
+        private const string emailBodyFormat = "<p>Your order has been procedeed and will be sended to address: <b> {0} </b></p> <p> Personal details: {1}, {2} </p> <p> Additional note: {3} </p>";
         public OrderConfirm()
         {
             InitializeComponent();
@@ -51,7 +51,9 @@ namespace PizzaApp.Forms
                     WindowsManagement.GetMainWindowInstance().Show();
                 }
                 else
+                {
                     MessageBox.Show(UserMessages.EmailFailedToSend, WindowsTypes.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -61,7 +63,7 @@ namespace PizzaApp.Forms
             {
                 Id = Guid.NewGuid(),
                 OrderTime = DateTime.Now,
-                Adress = AddressTextBox.Text,
+                Address = AddressTextBox.Text,
                 OrderMessage = NotesTextBox.Text,
                 CustomerName = $"{FirstNameTextBox.Text} {LastNameTextBox.Text}"
             };

@@ -1,9 +1,10 @@
-﻿using PizzaApp.Logic;
+﻿using PizzaApp.Config;
+using PizzaApp.Logic;
 using PizzaApp.Logic.User;
 using PizzaApp.Models;
+using PizzaApp.Models.Products.Abstract;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -24,8 +25,18 @@ namespace PizzaApp.Forms
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
+            AddExtrasProductToOrderList();
+        }
+
+        private void ExtrasPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AddExtrasProductToOrderList()
+        {
             OrderWindow orderWindow = WindowsManagement.GetOrderWindowInstance();
-            TextBox choosedFoodType = orderWindow.choosedTextBox;
+            TextBox foodTextBox = orderWindow.choosedCountBox;
             List<CheckBox> checkBoxes = new List<CheckBox>()
             {
                 DoubleCheeseCheckbox,
@@ -34,7 +45,9 @@ namespace PizzaApp.Forms
                 SalamiCheckbox
             };
 
-            Order order = new Order(choosedFoodType.Name, decimal.Parse(ConfigurationManager.AppSettings[choosedFoodType.Name]), string.Empty);
+            string foodName = foodTextBox.Name.Replace("CountBox", string.Empty);
+            ProductsConfiguration.ExtrasProduct.TryGetValue(foodName, out Product value);
+            var order = new Order(new Product(value.Name, value.Price, value.Extras));
 
             List<string> extras = new List<string>();
 
@@ -44,22 +57,19 @@ namespace PizzaApp.Forms
                 {
                     checkBox.Checked = false;
                     extras.Add(checkBox.Text);
-                    order.Price += 2;
+                    order.Product.Price += 2;
                 }
             }
 
-            if(extras.Any())
-                order.Extras = extras.Aggregate((i, j) => string.Format("{0}, {1}", i, j));
+            if (extras.Any())
+            {
+                order.Product.Extras.Add(extras.Aggregate((i, j) => string.Format("{0}, {1}", i, j)));
+            }
 
             orderWindow.orderList.Add(order);
-            UserActionHelpers.AddValueToCountBox(choosedFoodType);
+            UserActionHelpers.AddValueToCountBox(foodTextBox);
             Hide();
             orderWindow.Show();
-        }
-
-        private void ExtrasPanel_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

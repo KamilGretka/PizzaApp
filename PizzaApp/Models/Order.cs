@@ -1,18 +1,14 @@
-﻿namespace PizzaApp.Models
+﻿using PizzaApp.Models.Products.Abstract;
+
+namespace PizzaApp.Models
 {
     public class Order
     {
-        public Order(string name, decimal price, string extras)
+        public Order(IProduct product)
         {
-            Name = name;
-            Price = price;
-            Extras = extras;
+            Product = product;
         }
 
-        public string Name { get; set; }
-
-        public decimal Price { get; set; }
-
-        public string Extras { get; set; }
+        public IProduct Product { get; private set; }
     }
 }

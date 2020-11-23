@@ -10,7 +10,7 @@ namespace PizzaApp.Models.Database
 
         public DateTime OrderTime { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public string OrderMessage { get; set; }
 

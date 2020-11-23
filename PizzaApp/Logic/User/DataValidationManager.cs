@@ -41,9 +41,13 @@ namespace PizzaApp.Logic.User
         public static (bool, string) CheckAddress(string address)
         {
             if (address.Any(char.IsDigit) && address.Any(char.IsLetter))
+            {
                 return (true, string.Empty);
+            }
             else
+            {
                 return (false, UserMessages.InvalidAddressFormat);
+            }
         }
     }
 }

@@ -19,9 +19,11 @@ namespace PizzaApp.Forms
 
         private void ShopCart_VisibleChanged(object sender, EventArgs e)
         {
+            //TODO fix problem with showing data in grid view
             ShopCartGridView.DataSource = null;
             var orderWindow = WindowsManagement.GetOrderWindowInstance();
             ShopCartGridView.DataSource = orderWindow.orderList;
+
         }
 
         private void ShopCart_FormClosing(object sender, FormClosingEventArgs e)
